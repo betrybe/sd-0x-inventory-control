@@ -91,7 +91,7 @@ Além disso, o relatório final deverá ser gerável em duas versões: simples e
 
 ### Como o projeto deve ser executável
 
-Seu programa deverá ser executável **via linha de comando** com o comando `python3 inventory.py argumento1 argumento2`:
+Seu programa deverá ser executável **via linha de comando** com o comando `python3 main.py argumento1 argumento2`:
 
 - O **argumento 1** deve receber o caminho de um arquivo a ser importado. O arquivo pode ser um `csv`, `json` ou `xml`.
 
@@ -112,6 +112,7 @@ Este repositório já contém um _template_ com a estrutura de diretórios e arq
 │   ├── inventory_20200823.csv
 │   ├── inventory_20200823.json
 │   └── inventory_20200823.xml
+├── main.py
 ├── inventory
 │   ├── inventory.py
 │   └── inventory_iterator.py
@@ -124,6 +125,7 @@ Este repositório já contém um _template_ com a estrutura de diretórios e arq
 │   ├── simple_report.py
 │   └── complete_report.py
 ├── tests
+│   ├── main.py
 │   ├── inventory.py
 │   ├── inventory_iterator.py
 │   ├── importer.py
