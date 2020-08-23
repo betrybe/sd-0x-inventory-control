@@ -306,7 +306,7 @@ Produtos estocados por empresa:
 
 ##### As seguintes verificações serão feitas:
 
-- A classe abstrata deve definir uma função de cabeçalho `import` a ser implementado por cada classe herdeira. Ela deve receber como parâmetro o nome do arquivo a ser importado.
+- A classe abstrata deve definir um método de cabeçalho (uma interface) `import` a ser implementado por cada classe herdeira. Ela deve receber como parâmetro o nome do arquivo a ser importado.
 
 - A função import definida por cada classe herdeira deve lançar uma exceção caso a extensão do arquivo passado por parâmetro seja inválida (por exemplo, quando se passa um `csv` para o `JsonImporter`).
 
@@ -326,6 +326,8 @@ Produtos estocados por empresa:
 ]
 ```
 
+- A classe `Inventory` deve utilizar as classes definidas neste requisito para lidar com a lógica de importação, via **composição**.
+
 #### 7 - Deve haver uma classe `InventoryIterator` no módulo `inventory-iterator`, que implementa a interface de um iterator. A classe `Inventory` deve implementar o método `__iter__` associado a essa classe.
 
 ##### As seguintes verificações serão feitas:
@@ -333,12 +335,11 @@ Produtos estocados por empresa:
 - As classes `InventoryIterator` e `Inventory` devem implementar corretamente a interface de um iterator, de modo que o código abaixo nos dê o primeiro item do dicionário de dados importados:
 
 ```python
-# ... Acima, um código que instancia e importa um arquivo para a variável `inventory`
+# ... Acima, um código que instancia e importa um arquivo para a variável `inventory` e importações do módulo Iterator e Iterable
 
 iterator = iter(inventory)
 first_item = next(iterator)
 ```
-
 
 ## Requisitos bônus:
 
