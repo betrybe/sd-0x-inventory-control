@@ -166,36 +166,55 @@ $ python3 -m flake8
 
 ## Dados
 
-### Importação de dados de estoque
-
 Arquivos de exemplo nos três formatos de importação estão disponíveis no diretório `data` deste repositório.
 
-### Relatório simples
+### Importação de arquivos CSV
 
-O relatório simples deve gerar, na linha de comando, os seguintes dados:
+Os arquivos **CSV** são separados por vírgula, como no exemplo abaixo:
 
-```json
-TODO: TBD
+```csv
+id,nome_do_produto,nome_da_empresa,data_de_fabricacao,data_de_validade,numero_de_serie,instrucoes_de_armazenamento
+1,Nicotine Polacrilex,Target Corporation,2020-02-18,2022-09-17,CR25 1551 4467 2549 4402 1,morbi ut odio cras mi pede malesuada in imperdiet et commodo vulputate justo in blandit
+2,fentanyl citrate,"Galena Biopharma, Inc.",2019-12-06,2022-12-25,FR29 5951 7573 74OY XKGX 6CSG D20,bibendum morbi non quam nec dui luctus rutrum nulla tellus in
+3,NITROUS OXIDE,Keen Compressed Gas Co. Inc.,2019-12-22,2023-11-07,CZ09 8588 0858 8435 9140 2695,ipsum dolor sit amet consectetuer adipiscing elit proin risus praesent
 ```
 
-### Relatório completo
+### Importação de arquivos JSON
 
-O relatório completo deve gerar, na linha de comando, os seguintes dados:
+Os arquivos JSON seguem o seguinte modelo:
 
 ```json
-TODO: TBD
+[
+  {
+    "id":1,
+    "nome_do_produto":"CALENDULA OFFICINALIS FLOWERING TOP, GERANIUM MACULATUM ROOT, SODIUM CHLORIDE, THUJA OCCIDENTALIS LEAFY TWIG, ZINC, and ECHINACEA ANGUSTIFOLIA",
+    "nome_da_empresa":"Forces of Nature",
+    "data_de_fabricacao":"2020-07-04",
+    "data_de_validade":"2023-02-09",
+    "numero_de_serie":"FR48 2002 7680 97V4 W6FO LEBT 081",
+    "instrucoes_de_armazenamento":"in blandit ultrices enim lorem ipsum dolor sit amet consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus"
+  }
+]
 ```
 
+### Importação de arquivos XML
 
-# TODO: Remove this
+Os arquivos **XML** seguem o seguinte modelo:
 
-1- Importar CSV na classe Estoque (TODO: definir formato e dar arquivos de teste)
-2- Importar JSON na classe Estoque (TODO: definir formato e dar arquivos de teste)
-3- Classe abstrata "Importador", 2-3 classes especificas "CSVImporter", "JSONImporter", usando composição pra juntar com a classe Estoque
-4- Implementar um iterator na classe estoque (TODO: ver o precisa pra implementar um iterator)
-5- Exportador simples em CSV (TODO: definir formato)
-6- Exportador complexo em CSV usando herança (TODO: definir formato)
-7- (BONUS) 90% de cobertura
+```xml
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <record>
+    <id>1</id>
+    <nome_do_produto>valsartan and hydrochlorothiazide</nome_do_produto>
+    <nome_da_empresa>Lake Erie Medical &amp; Surgical Supply DBA Quality Care Products LLC</nome_da_empresa>
+    <data_de_fabricacao>2019-10-27</data_de_fabricacao>
+    <data_de_validade>2022-08-31</data_de_validade>
+    <numero_de_serie>MT08 VVDN 2131 9NFL C1JG KTDV RS1L LOZ</numero_de_serie>
+    <instrucoes_de_armazenamento>at lorem integer tincidunt ante vel ipsum praesent blandit lacinia erat</instrucoes_de_armazenamento>
+  </record>
+</dataset>
+```
 
 ---
 
@@ -208,14 +227,28 @@ TODO: TBD
 - A função deve receber de parâmetro um dict no seguinte formato:
 
 ```python
-TODO: TBD
+[
+  {
+    "id": 1,
+    "nome_do_produto": "CALENDULA OFFICINALIS FLOWERING TOP, GERANIUM MACULATUM ROOT, SODIUM CHLORIDE, THUJA OCCIDENTALIS LEAFY TWIG, ZINC, and ECHINACEA ANGUSTIFOLIA",
+    "nome_da_empresa": "Forces of Nature",
+    "data_de_fabricacao": "2020-07-04",
+    "data_de_validade": "2023-02-09",
+    "numero_de_serie": "FR48 2002 7680 97V4 W6FO LEBT 081",
+    "instrucoes_de_armazenamento": "in blandit ultrices enim lorem ipsum dolor sit amet consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus"
+  }
+]
 ```
 
 - A função deverá gerar, na linha de comando, uma saída com o seguinte formato:
 
 ```bash
-TODO: TBD
+Data de fabricação mais antiga: YYYY-MM-DD
+Data de validade mais próxima: YYYY-MM-DD
+Empresa com maior quantidade de produtos estocados: NOME DA EMPRESA
 ```
+
+**Dica**: O módulo [datetime](https://docs.python.org/3/library/datetime.html) vai te ajudar.
 
 #### 2 - Deve haver uma função `generate` numa classe `CompleteReport` do módulo `complete-report`. Essa função deverá receber dados numa estrutura `dict` e deverá gerar uma saída para a linha de comando.
 
@@ -226,13 +259,29 @@ TODO: TBD
 - A função deve receber de parâmetro um dict no seguinte formato:
 
 ```python
-TODO: TBD
+[
+  {
+    "id": 1,
+    "nome_do_produto": "CALENDULA OFFICINALIS FLOWERING TOP, GERANIUM MACULATUM ROOT, SODIUM CHLORIDE, THUJA OCCIDENTALIS LEAFY TWIG, ZINC, and ECHINACEA ANGUSTIFOLIA",
+    "nome_da_empresa": "Forces of Nature",
+    "data_de_fabricacao": "2020-07-04",
+    "data_de_validade": "2023-02-09",
+    "numero_de_serie": "FR48 2002 7680 97V4 W6FO LEBT 081",
+    "instrucoes_de_armazenamento": "in blandit ultrices enim lorem ipsum dolor sit amet consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus"
+  }
+]
 ```
 
 - A função deverá gerar, na linha de comando, uma saída com o seguinte formato:
 
 ```bash
-TODO: TBD
+Data de fabricação mais antiga: YYYY-MM-DD
+Data de validade mais próxima: YYYY-MM-DD
+Empresa com maior quantidade de produtos estocados: NOME DA EMPRESA
+Produtos estocados por empresa:
+- Physicians Total Care, Inc.: QUANTIDADE
+- Newton Laboratories, Inc.: QUANTIDADE
+- Forces of Nature: QUANTIDADE
 ```
 
 #### 3 - Deve haver uma função `import` dentro de uma classe `Inventory` do módulo `inventory`, capaz de ler um arquivo CSV passado como parâmetro de linha de comando
@@ -261,10 +310,20 @@ TODO: TBD
 
 - A função import definida por cada classe herdeira deve lançar uma exceção caso a extensão do arquivo passado por parâmetro seja inválida (por exemplo, quando se passa um `csv` para o `JsonImporter`).
 
-- A função deverá ler os dados do arquivo passado e retorná-los estruturados em um `dict`. Por exemplo:
+- A função deverá ler os dados do arquivo passado e retorná-los estruturados em um `dict` conforme exemplo abaixo:
 
 ```python
-TODO: TBD
+[
+  {
+    "id": 1,
+    "nome_do_produto": "CALENDULA OFFICINALIS FLOWERING TOP, GERANIUM MACULATUM ROOT, SODIUM CHLORIDE, THUJA OCCIDENTALIS LEAFY TWIG, ZINC, and ECHINACEA ANGUSTIFOLIA",
+    "nome_da_empresa": "Forces of Nature",
+    "data_de_fabricacao": "2020-07-04",
+    "data_de_validade": "2023-02-09",
+    "numero_de_serie": "FR48 2002 7680 97V4 W6FO LEBT 081",
+    "instrucoes_de_armazenamento": "in blandit ultrices enim lorem ipsum dolor sit amet consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus"
+  }
+]
 ```
 
 #### 7 - Deve haver uma classe `InventoryIterator` no módulo `inventory-iterator`, que implementa a interface de um iterator. A classe `Inventory` deve implementar o método `__iter__` associado a essa classe.
