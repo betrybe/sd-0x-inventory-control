@@ -97,7 +97,7 @@ Seu programa deverá ser executável **via linha de comando** com o comando `pyt
 
 - O **argumento 1** deve receber o caminho de um arquivo a ser importado. O arquivo pode ser um `csv`, `json` ou `xml`.
 
-- O **argumento 2** pode receber duas strings: `simples` e `completo`, cada uma gerando o respectivo relatório.
+- O **argumento 2** pode receber duas strings: `simples` ou `completo`, cada uma gerando o respectivo relatório.
 
 ---
 
@@ -110,11 +110,11 @@ Este repositório já contém um _template_ com a estrutura de diretórios e arq
 ├── README.md
 ├── setup.cfg
 ├── requirements.txt
+├── main.py
 ├── data
 │   ├── inventory_20200823.csv
 │   ├── inventory_20200823.json
 │   └── inventory_20200823.xml
-├── main.py
 ├── inventory
 │   ├── inventory.py
 │   └── inventory_iterator.py
@@ -127,18 +127,18 @@ Este repositório já contém um _template_ com a estrutura de diretórios e arq
 │   ├── simple_report.py
 │   └── complete_report.py
 ├── tests
-│   ├── main.py
-│   ├── inventory.py
-│   ├── inventory_iterator.py
-│   ├── importer.py
-│   ├── csv_importer.py
-│   ├── json_importer.py
-│   ├── xml_importer.py
-│   ├── simple_report.py
-│   └── complete_report.py
+│   ├── test_main.py
+│   ├── test_inventory.py
+│   ├── test_inventory_iterator.py
+│   ├── test_importer.py
+│   ├── test_csv_importer.py
+│   ├── test_json_importer.py
+│   ├── test_xml_importer.py
+│   ├── test_simple_report.py
+│   └── test_complete_report.py
 ```
 
-Apesar do projeto já possuir uma estrutura base, você quem deve implementar tanto as funções quanto os testes. Novos arquivos podem ser criados conforme a necessidade.
+Apesar do projeto já possuir uma estrutura base, você quem deve implementar tanto as classes quanto os testes. Novos arquivos podem ser criados conforme a necessidade.
 
 Para executar os testes, lembre-se de primeiro **criar e ativar o ambiente virtual**, além de também instalar as dependências do projeto. Isso pode ser feito através dos comandos:
 
@@ -222,111 +222,111 @@ Os arquivos **XML** seguem o seguinte modelo:
 
 ## Requisitos obrigatórios:
 
-#### 1 - Deve haver uma função `generate` numa classe `SimpleReport` do módulo `simple-report`. Essa função deverá receber dados numa estrutura `dict` e deverá gerar uma saída para a linha de comando.
+#### 1 - Deve haver um método `generate` numa classe `SimpleReport` do módulo `simple-report`. Esse método deverá receber dados numa lista contendo estruturas do tipo `dict` e deverá gerar uma saída para a linha de comando.
 
 ##### As seguintes verificações serão feitas:
 
-- A função deve receber de parâmetro um dict no seguinte formato:
+- O método deve receber de parâmetro uma lista de dicionários no seguinte formato:
 
-```python
-[
-  {
-    "id": 1,
-    "nome_do_produto": "CALENDULA OFFICINALIS FLOWERING TOP, GERANIUM MACULATUM ROOT, SODIUM CHLORIDE, THUJA OCCIDENTALIS LEAFY TWIG, ZINC, and ECHINACEA ANGUSTIFOLIA",
-    "nome_da_empresa": "Forces of Nature",
-    "data_de_fabricacao": "2020-07-04",
-    "data_de_validade": "2023-02-09",
-    "numero_de_serie": "FR48 2002 7680 97V4 W6FO LEBT 081",
-    "instrucoes_de_armazenamento": "in blandit ultrices enim lorem ipsum dolor sit amet consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus"
-  }
-]
-```
+   ```json
+   [
+     {
+       "id": 1,
+       "nome_do_produto": "CALENDULA OFFICINALIS FLOWERING TOP, GERANIUM MACULATUM ROOT, SODIUM CHLORIDE, THUJA OCCIDENTALIS LEAFY TWIG, ZINC, and ECHINACEA ANGUSTIFOLIA",
+       "nome_da_empresa": "Forces of Nature",
+       "data_de_fabricacao": "2020-07-04",
+       "data_de_validade": "2023-02-09",
+       "numero_de_serie": "FR48 2002 7680 97V4 W6FO LEBT 081",
+       "instrucoes_de_armazenamento": "in blandit ultrices enim lorem ipsum dolor sit amet consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices    phasellus"
+     }
+   ]
+   ```
 
-- A função deverá gerar, na linha de comando, uma saída com o seguinte formato:
+- O método deverá gerar, na linha de comando, uma saída com o seguinte formato:
 
-```bash
-Data de fabricação mais antiga: YYYY-MM-DD
-Data de validade mais próxima: YYYY-MM-DD
-Empresa com maior quantidade de produtos estocados: NOME DA EMPRESA
-```
+   ```bash
+   Data de fabricação mais antiga: YYYY-MM-DD
+   Data de validade mais próxima: YYYY-MM-DD
+   Empresa com maior quantidade de produtos estocados: NOME DA EMPRESA
+   ```
 
 **Dica**: O módulo [datetime](https://docs.python.org/3/library/datetime.html) vai te ajudar.
 
-#### 2 - Deve haver uma função `generate` numa classe `CompleteReport` do módulo `complete-report`. Essa função deverá receber dados numa estrutura `dict` e deverá gerar uma saída para a linha de comando.
+#### 2 - Deve haver um método `generate` numa classe `CompleteReport` do módulo `complete-report`. Esse método deverá receber dados numa lista contendo estruturas do tipo `dict` e deverá gerar uma saída para a linha de comando.
 
 ##### As seguintes verificações serão feitas:
 
-- A função deve ser herdeira da classe `SimpleReport`, de modo a especializar seu comportamento.
+- A classe `CompleteReport` deve herdar o método (`generate`) da classe `SimpleReport`, de modo a especializar seu comportamento.
 
-- A função deve receber de parâmetro um dict no seguinte formato:
+- O método deve receber de parâmetro uma lista de dicionários no seguinte formato:
 
-```python
-[
-  {
-    "id": 1,
-    "nome_do_produto": "CALENDULA OFFICINALIS FLOWERING TOP, GERANIUM MACULATUM ROOT, SODIUM CHLORIDE, THUJA OCCIDENTALIS LEAFY TWIG, ZINC, and ECHINACEA ANGUSTIFOLIA",
-    "nome_da_empresa": "Forces of Nature",
-    "data_de_fabricacao": "2020-07-04",
-    "data_de_validade": "2023-02-09",
-    "numero_de_serie": "FR48 2002 7680 97V4 W6FO LEBT 081",
-    "instrucoes_de_armazenamento": "in blandit ultrices enim lorem ipsum dolor sit amet consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus"
-  }
-]
-```
+   ```json
+   [
+     {
+       "id": 1,
+       "nome_do_produto": "CALENDULA OFFICINALIS FLOWERING TOP, GERANIUM MACULATUM ROOT, SODIUM CHLORIDE, THUJA OCCIDENTALIS LEAFY TWIG, ZINC, and ECHINACEA ANGUSTIFOLIA",
+       "nome_da_empresa": "Forces of Nature",
+       "data_de_fabricacao": "2020-07-04",
+       "data_de_validade": "2023-02-09",
+       "numero_de_serie": "FR48 2002 7680 97V4 W6FO LEBT 081",
+       "instrucoes_de_armazenamento": "in blandit ultrices enim lorem ipsum dolor sit amet consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices    phasellus"
+     }
+   ]
+   ```
 
-- A função deverá gerar, na linha de comando, uma saída com o seguinte formato:
+- O método deverá gerar, na linha de comando, uma saída com o seguinte formato:
 
-```bash
-Data de fabricação mais antiga: YYYY-MM-DD
-Data de validade mais próxima: YYYY-MM-DD
-Empresa com maior quantidade de produtos estocados: NOME DA EMPRESA
-Produtos estocados por empresa:
-- Physicians Total Care, Inc.: QUANTIDADE
-- Newton Laboratories, Inc.: QUANTIDADE
-- Forces of Nature: QUANTIDADE
-```
+   ```bash
+   Data de fabricação mais antiga: YYYY-MM-DD
+   Data de validade mais próxima: YYYY-MM-DD
+   Empresa com maior quantidade de produtos estocados: NOME DA EMPRESA
+   Produtos estocados por empresa:
+   - Physicians Total Care, Inc.: QUANTIDADE
+   - Newton Laboratories, Inc.: QUANTIDADE
+   - Forces of Nature: QUANTIDADE
+   ```
 
-#### 3 - Deve haver uma função `import` dentro de uma classe `Inventory` do módulo `inventory`, capaz de ler um arquivo CSV passado como parâmetro de linha de comando
-
-##### As seguintes verificações serão feitas:
-
-- A função, quando receber um arquivo CSV, deve chamar a função de gerar relatório correspondente à entrada passada, `simples` ou `completo`, com os dados importados corretamente passados por parâmetro a elas.
-
-#### 4 - Deve haver uma função `import` dentro de uma classe `Inventory` do módulo `inventory`, capaz de ler um arquivo JSON passado como parâmetro de linha de comando
+#### 3 - Deve haver um método `import` dentro de uma classe `Inventory` do módulo `inventory`, capaz de ler um arquivo CSV passado como parâmetro de linha de comando
 
 ##### As seguintes verificações serão feitas:
 
-- A função, quando receber um arquivo JSON, deve chamar a função de gerar relatório correspondente à entrada passada, `simples` ou `completo`, com os dados importados corretamente passados por parâmetro a elas.
+- O método, quando receber um arquivo CSV, deve chamar o método de gerar relatório correspondente à entrada passada, `simples` ou `completo`. Ou seja, o método da classe `Inventory` deve chamar o método da classe que vai gerar o relatório.
 
-#### 5 - Deve haver uma função `import` dentro de uma classe `Inventory` do módulo `inventory`, capaz de ler um arquivo XML passado como parâmetro  de linha de comando
+#### 4 - Deve haver um método `import` dentro de uma classe `Inventory` do módulo `inventory`, capaz de ler um arquivo JSON passado como parâmetro de linha de comando
 
 ##### As seguintes verificações serão feitas:
 
-- A função, quando receber um arquivo XML, deve chamar a função de gerar relatório correspondente à entrada passada, `simples` ou `completo`, com os dados importados corretamente passados por parâmetro a elas.
+- O método, quando receber um arquivo JSON, deve chamar o método de gerar relatório correspondente à entrada passada, `simples` ou `completo`. Ou seja, o método da classe `Inventory` deve chamar o método da classe que vai gerar o relatório.
+
+#### 5 - Deve haver um método `import` dentro de uma classe `Inventory` do módulo `inventory`, capaz de ler um arquivo XML passado como parâmetro  de linha de comando
+
+##### As seguintes verificações serão feitas:
+
+- O método, quando receber um arquivo XML, deve chamar o método de gerar relatório correspondente à entrada passada, `simples` ou `completo`. Ou seja, o método da classe `Inventory` deve chamar o método da classe que vai gerar o relatório.
 
 #### 6 - Deve haver uma classe abstrata `Importer` no módulo import. Deve haver três classes herdeiras desta: `CsvImporter`, `JsonImporter` e `XmlImporter`, cada uma definida em seu respectivo módulo.
 
 ##### As seguintes verificações serão feitas:
 
-- A classe abstrata deve definir um método de cabeçalho (uma interface) `import` a ser implementado por cada classe herdeira. Ela deve receber como parâmetro o nome do arquivo a ser importado.
+- A classe abstrata deve definir a assinatura do método `import` a ser implementado por cada classe herdeira. Ela deve receber como parâmetro o nome do arquivo a ser importado.
 
-- A função import definida por cada classe herdeira deve lançar uma exceção caso a extensão do arquivo passado por parâmetro seja inválida (por exemplo, quando se passa um `csv` para o `JsonImporter`).
+- O método `import` definida por cada classe herdeira deve lançar uma exceção caso a extensão do arquivo passado por parâmetro seja inválida. Por exemplo, quando se passa um CSV para o `JsonImporter`.
 
-- A função deverá ler os dados do arquivo passado e retorná-los estruturados em um `dict` conforme exemplo abaixo:
+- O método deverá ler os dados do arquivo passado e retorná-los estruturados em uma lista de dicionários conforme exemplo abaixo:
 
-```python
-[
-  {
-    "id": 1,
-    "nome_do_produto": "CALENDULA OFFICINALIS FLOWERING TOP, GERANIUM MACULATUM ROOT, SODIUM CHLORIDE, THUJA OCCIDENTALIS LEAFY TWIG, ZINC, and ECHINACEA ANGUSTIFOLIA",
-    "nome_da_empresa": "Forces of Nature",
-    "data_de_fabricacao": "2020-07-04",
-    "data_de_validade": "2023-02-09",
-    "numero_de_serie": "FR48 2002 7680 97V4 W6FO LEBT 081",
-    "instrucoes_de_armazenamento": "in blandit ultrices enim lorem ipsum dolor sit amet consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus"
-  }
-]
-```
+   ```json
+   [
+     {
+       "id": 1,
+       "nome_do_produto": "CALENDULA OFFICINALIS FLOWERING TOP, GERANIUM MACULATUM ROOT, SODIUM CHLORIDE, THUJA OCCIDENTALIS LEAFY TWIG, ZINC, and ECHINACEA ANGUSTIFOLIA",
+       "nome_da_empresa": "Forces of Nature",
+       "data_de_fabricacao": "2020-07-04",
+       "data_de_validade": "2023-02-09",
+       "numero_de_serie": "FR48 2002 7680 97V4 W6FO LEBT 081",
+       "instrucoes_de_armazenamento": "in blandit ultrices enim lorem ipsum dolor sit amet consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices    phasellus"
+     }
+   ]
+   ```
 
 - A classe `Inventory` deve utilizar as classes definidas neste requisito para lidar com a lógica de importação, via **composição**.
 
@@ -334,14 +334,14 @@ Produtos estocados por empresa:
 
 ##### As seguintes verificações serão feitas:
 
-- As classes `InventoryIterator` e `Inventory` devem implementar corretamente a interface de um iterator, de modo que o código abaixo nos dê o primeiro item do dicionário de dados importados:
+- As classes `InventoryIterator` e `Inventory` devem implementar corretamente a interface de um iterator, de modo que o código abaixo nos dê o primeiro item da lista de dicionários com os dados importados:
 
-```python
-# ... Acima, um código que instancia e importa um arquivo para a variável `inventory` e importações do módulo Iterator e Iterable
-
-iterator = iter(inventory)
-first_item = next(iterator)
-```
+   ```python
+   # ... Acima, um código que instancia e importa um arquivo para a variável `inventory` e importações do módulo Iterator e Iterable
+   
+   iterator = iter(inventory)
+   first_item = next(iterator)
+   ```
 
 ## Requisitos bônus:
 
@@ -352,8 +352,6 @@ first_item = next(iterator)
 - Todos os testes que envolvem mensagens na saída padrão ou de erro, devem ter sua saída redirecionada para Fakes com `StringIO`;
 
 - Todos os testes que envolvem manipulação de arquivos criam Fakes com `StringIO`;
-
-- Todas as requisições externas a uma classe utilizam _Mocks_;
 
 - A cobertura de testes é de no mínimo 90%.
 
