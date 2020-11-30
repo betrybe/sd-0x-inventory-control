@@ -24,7 +24,7 @@ Nota: após terminar o trabalho, para desativar o ambiente virtual digite `deact
 
 3. Instale as dependências
 
-- `python3 -m pip install -r requirements.txt`
+- `python3 -m pip install -r dev-requirements.txt`
 
 4. Crie uma branch a partir da branch `master`
 
@@ -89,11 +89,11 @@ Esses dados de estoque poderão ser obtidos de diversas formas, sendo elas:
 
 - Através da importação de um arquivo `XML`;
 
-Além disso, o relatório final deverá ser gerável em duas versões: simples e completa.
+Além disso, o relatório final deverá ser geráveis em duas versões: simples e completa.
 
 ### Como o projeto deve ser executável
 
-Seu programa deverá ser executável **via linha de comando** com o comando `python3 main.py argumento1 argumento2`:
+Seu programa deverá ser executável **via linha de comando** com o comando `inventory_report argumento1 argumento2`:
 
 - O **argumento 1** deve receber o caminho de um arquivo a ser importado. O arquivo pode ser um `csv`, `json` ou `xml`.
 
@@ -107,35 +107,39 @@ Este repositório já contém um _template_ com a estrutura de diretórios e arq
 
 ```
 .
+├── dev-requirements.txt
+├── inventory_report
+│   ├── data
+│   │   ├── inventory_20200823.csv
+│   │   ├── inventory_20200823.json
+│   │   └── inventory_20200823.xml
+│   ├── importer
+│   │   ├── csv_importer.py
+│   │   ├── importer.py
+│   │   ├── json_importer.py
+│   │   └── xml_importer.py
+│   ├── inventory
+│   │   ├── inventory_iterator.py
+│   │   └── inventory.py
+│   ├── main.py
+│   └── reports
+│       ├── complete_report.py
+│       └── simple_report.py
+├── pyproject.toml
 ├── README.md
-├── setup.cfg
 ├── requirements.txt
-├── main.py
-├── data
-│   ├── inventory_20200823.csv
-│   ├── inventory_20200823.json
-│   └── inventory_20200823.xml
-├── inventory
-│   ├── inventory.py
-│   └── inventory_iterator.py
-├── importer
-│   ├── importer.py
-│   ├── csv_importer.py
-│   ├── json_importer.py
-│   └── xml_importer.py
-├── reports
-│   ├── simple_report.py
-│   └── complete_report.py
-├── tests
-│   ├── test_main.py
-│   ├── test_inventory.py
-│   ├── test_inventory_iterator.py
-│   ├── test_importer.py
-│   ├── test_csv_importer.py
-│   ├── test_json_importer.py
-│   ├── test_xml_importer.py
-│   ├── test_simple_report.py
-│   └── test_complete_report.py
+├── setup.cfg
+├── setup.py
+└── tests
+    ├── __init__.py
+    ├── test_complete_report.py
+    ├── test_csv_importer.py
+    ├── test_importer.py
+    ├── test_inventory.py
+    ├── test_json_importer.py
+    ├── test_main.py
+    ├── test_simple_report.py
+    └── test_xml_importer.py
 ```
 
 Apesar do projeto já possuir uma estrutura base, você quem deve implementar tanto as classes quanto os testes. Novos arquivos podem ser criados conforme a necessidade.
@@ -147,10 +151,10 @@ $ python3 -m venv .venv
 
 $ source .venv/bin/activate
 
-$ python3 -m pip install -r requirements.txt
+$ python3 -m pip install -r dev-requirements.txt
 ```
 
-O arquivo `requirements.txt` contém todos as dependências que serão utilizadas no projeto, ele está agindo como se fosse um `package.json` de um projeto `Node.js`. Com as dependências já instaladas, para executar os testes basta usar o comando:
+O arquivo `dev-requirements.txt` contém todos as dependências que serão utilizadas no projeto, ele está agindo como se fosse um `package.json` de um projeto `Node.js`. Com as dependências já instaladas, para executar os testes basta usar o comando:
 
 ```bash
 $ python3 -m pytest
