@@ -89,7 +89,7 @@ Esses dados de estoque poderão ser obtidos de diversas formas, sendo elas:
 
 - Através da importação de um arquivo `XML`;
 
-Além disso, o relatório final deverá ser geráveis em duas versões: simples e completa.
+Além disso, o relatório final deverá poder ser gerado em duas versões: simples e completa.
 
 ### Como o projeto deve ser executável
 
