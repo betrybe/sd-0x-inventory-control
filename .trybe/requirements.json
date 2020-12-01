@@ -1,17 +1,17 @@
 {
   "requirements": [
     {
-      "identifier": "test_validar_data_de_fabricacao_mais_antiga",
+      "identifier": "test_validar_simplereport_retorna_data_de_fabricacao_mais_antiga",
       "description": "Será validado que é possível listar a data de fabricação mais antiga",
       "bonus": false
     },
     {
-      "identifier": "test_validar_validade_mais_proxima",
+      "identifier": "test_validar_simplereport_retorna_validade_mais_proxima",
       "description": "Será validado que é possível listar a data de validade mais próxima",
       "bonus": false
     },
     {
-      "identifier": "test_validar_empresa_com_maior_produtos_estocados",
+      "identifier": "test_validar_simplereport_retorna_empresa_com_maior_produtos_estocados",
       "description": "Será validado que é possível listar a empresa com pais produtos estocados",
       "bonus": false
     }

@@ -44,17 +44,17 @@ def stock():
     ]
 
 
-def test_validar_data_de_fabricacao_mais_antiga(stock):
+def test_validar_simplereport_retorna_data_de_fabricacao_mais_antiga(stock):
     report = SimpleReport.generate(stock)
     assert "Data de fabricação mais antiga: 2019-09-13" in report
 
 
-def test_validar_validade_mais_proxima(stock):
+def test_validar_simplereport_retorna_validade_mais_proxima(stock):
     report = SimpleReport.generate(stock)
     assert "Data de validade mais próxima: 2023-01-17" in report
 
 
-def test_validar_empresa_com_maior_produtos_estocados(stock):
+def test_validar_simplereport_retorna_empresa_com_maior_produtos_estocados(stock):
     report = SimpleReport.generate(stock)
     expected = (
         "Empresa com maior quantidade de produtos estocados:"
