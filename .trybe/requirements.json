@@ -2,17 +2,47 @@
   "requirements": [
     {
       "identifier": "test_validar_simplereport_retorna_data_de_fabricacao_mais_antiga",
-      "description": "Será validado que é possível listar a data de fabricação mais antiga",
+      "description": "Será validado que é possível que a classe `SimpleReport` liste a data de fabricação mais antiga",
       "bonus": false
     },
     {
       "identifier": "test_validar_simplereport_retorna_validade_mais_proxima",
-      "description": "Será validado que é possível listar a data de validade mais próxima",
+      "description": "Será validado que é possível que a classe `SimpleReport` liste a validade de fabricação mais próxima",
       "bonus": false
     },
     {
-      "identifier": "test_validar_simplereport_retorna_empresa_com_maior_produtos_estocados",
-      "description": "Será validado que é possível listar a empresa com pais produtos estocados",
+      "identifier": "test_validar_simplereport_retorna_empresa_com_maior_estoque",
+      "description": "Será validado que é possível que a classe `SimpleReport` liste a empresa com maior estoque",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_simplereport_retorna_formato_correto",
+      "description": "Será validado que é possível que a classe `SimpleReport` liste o formato correto",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_completereport_retorna_data_de_fabricacao_mais_antiga",
+      "description": "Será validado que é possível que a classe `CompleteReport` liste a data de fabricação mais antiga",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_completereport_retorna_validade_mais_proxima",
+      "description": "Será validado que é possível que a classe `CompleteReport` liste a validade de fabricação mais próxima",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_completereport_retorna_empresa_com_maior_estoque",
+      "description": "Será validado que é possível que a classe `CompleteReport` liste a empresa com maior estoque",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_completereport_retorna_quantidade_de_estoque_correto",
+      "description": "Será validado que é possível que a classe `CompleteReport` liste a quantidade de estoque correto",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_completereport_retorna_formato_correto",
+      "description": "Será validado que é possível que a classe `CompleteReport` liste o formato correto",
       "bonus": false
     }
   ]

@@ -54,10 +54,21 @@ def test_validar_simplereport_retorna_validade_mais_proxima(stock):
     assert "Data de validade mais próxima: 2023-01-17" in report
 
 
-def test_validar_simplereport_retorna_empresa_com_maior_produtos_estocados(stock):
+def test_validar_simplereport_retorna_empresa_com_maior_estoque(stock):
     report = SimpleReport.generate(stock)
     expected = (
         "Empresa com maior quantidade de produtos estocados:"
         " sanofi-aventis U.S. LLC"
+    )
+    assert expected in report
+
+
+def test_validar_simplereport_retorna_formato_correto(stock):
+    report = SimpleReport.generate(stock)
+    expected = (
+        "Data de fabricação mais antiga: 2019-09-13\n"
+        "Data de validade mais próxima: 2023-01-17\n"
+        "Empresa com maior quantidade de produtos "
+        "estocados: sanofi-aventis U.S. LLC\n"
     )
     assert expected in report

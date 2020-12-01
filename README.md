@@ -256,15 +256,15 @@ Os arquivos **XML** seguem o seguinte modelo:
 
 ##### As seguintes verificações serão feitas:
 
-**[Será validado que é possível listar a data de fabricação mais antiga]**
+**[Será validado que é possível que a classe `SimpleReport` liste a data de fabricação mais antiga]**
 
-**[Será validado que é possível listar a data de validade mais próxima]**
+**[Será validado que é possível que a classe `SimpleReport` liste a validade de fabricação mais próxima]**
 
-**[Será validado que é possível listar a empresa com pais produtos estocados]**
+**[Será validado que é possível que a classe `SimpleReport` liste a empresa com maior estoque]**
+
+**[Será validado que é possível que a classe `SimpleReport` liste o formato correto]**
 
 #### 2 - Deve haver um método `generate` numa classe `CompleteReport` do módulo `complete-report`. Esse método deverá receber dados numa lista contendo estruturas do tipo `dict` e deverá gerar uma saída para a linha de comando.
-
-##### As seguintes verificações serão feitas:
 
 - A classe `CompleteReport` deve herdar o método (`generate`) da classe `SimpleReport`, de modo a especializar seu comportamento.
 
@@ -295,6 +295,18 @@ Os arquivos **XML** seguem o seguinte modelo:
    - Newton Laboratories, Inc.: QUANTIDADE
    - Forces of Nature: QUANTIDADE
    ```
+
+##### As seguintes verificações serão feitas:
+
+**[Será validado que é possível que a classe `CompleteReport` liste a data de fabricação mais antiga]**
+
+**[Será validado que é possível que a classe `CompleteReport` liste a validade de fabricação mais próxima]**
+
+**[Será validado que é possível que a classe `CompleteReport` liste a empresa com maior estoque]**
+
+**[Será validado que é possível que a classe `CompleteReport` liste a quantidade de estoque correto]**
+
+**[Será validado que é possível que a classe `CompleteReport` liste o formato correto]**
 
 #### 3 - Deve haver um método `import_data` dentro de uma classe `Inventory` do módulo `inventory`, capaz de ler um arquivo CSV passado como parâmetro de linha de comando
 
