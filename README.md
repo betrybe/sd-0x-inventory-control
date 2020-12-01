@@ -228,8 +228,6 @@ Os arquivos **XML** seguem o seguinte modelo:
 
 #### 1 - Deve haver um método `generate` numa classe `SimpleReport` do módulo `simple-report`. Esse método deverá receber dados numa lista contendo estruturas do tipo `dict` e deverá gerar uma saída para a linha de comando.
 
-##### As seguintes verificações serão feitas:
-
 - O método deve receber de parâmetro uma lista de dicionários no seguinte formato:
 
    ```json
@@ -255,6 +253,14 @@ Os arquivos **XML** seguem o seguinte modelo:
    ```
 
 **Dica**: O módulo [datetime](https://docs.python.org/3/library/datetime.html) vai te ajudar.
+
+##### As seguintes verificações serão feitas:
+
+**[Será validado que é possível listar a data de fabricação mais antiga]**
+
+**[Será validado que é possível listar a data de validade mais próxima]**
+
+**[Será validado que é possível listar a empresa com pais produtos estocados]**
 
 #### 2 - Deve haver um método `generate` numa classe `CompleteReport` do módulo `complete-report`. Esse método deverá receber dados numa lista contendo estruturas do tipo `dict` e deverá gerar uma saída para a linha de comando.
 
