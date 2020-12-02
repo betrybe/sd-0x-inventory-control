@@ -44,6 +44,36 @@
       "identifier": "test_validar_completereport_retorna_formato_correto",
       "description": "Será validado que é possível que a classe `CompleteReport` liste o formato correto",
       "bonus": false
+    },
+    {
+      "identifier": "test_validar_importerdata_importar_um_arquivo_csv_simples",
+      "description": "Será validado que ao importar um arquivo csv simples será retornado com sucesso",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_importerdata_importar_um_arquivo_csv_completo",
+      "description": "Será validado que ao importar um arquivo csv completo será retornado com sucesso",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_importerdata_importar_um_arquivo_json_simples",
+      "description": "Será validado que ao importar um arquivo json simples será retornado com sucesso",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_importerdata_importar_um_arquivo_json_completo",
+      "description": "Será validado que ao importar um arquivo json completo será retornado com sucesso",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_importerdata_importar_um_arquivo_xml_simples",
+      "description": "Será validado que ao importar um arquivo xml simples será retornado com sucesso",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_importerdata_importar_um_arquivo_xml_completo",
+      "description": "Será validado que ao importar um arquivo xml completo será retornado com sucesso",
+      "bonus": false
     }
   ]
 }

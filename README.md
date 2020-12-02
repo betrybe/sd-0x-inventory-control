@@ -110,9 +110,9 @@ Este repositório já contém um _template_ com a estrutura de diretórios e arq
 ├── dev-requirements.txt
 ├── inventory_report
 │   ├── data
-│   │   ├── inventory_20200823.csv
-│   │   ├── inventory_20200823.json
-│   │   └── inventory_20200823.xml
+│   │   ├── inventory.csv
+│   │   ├── inventory.json
+│   │   └── inventory.xml
 │   ├── importer
 │   │   ├── csv_importer.py
 │   │   ├── importer.py
@@ -310,21 +310,33 @@ Os arquivos **XML** seguem o seguinte modelo:
 
 #### 3 - Deve haver um método `import_data` dentro de uma classe `Inventory` do módulo `inventory`, capaz de ler um arquivo CSV passado como parâmetro de linha de comando
 
+- O método, quando receber um arquivo CSV, deve chamar o método de gerar relatório correspondente à entrada passada, `simples` ou `completo`. Ou seja, o método da classe `Inventory` deve chamar o método da classe que vai gerar o relatório.
+
 ##### As seguintes verificações serão feitas:
 
-- O método, quando receber um arquivo CSV, deve chamar o método de gerar relatório correspondente à entrada passada, `simples` ou `completo`. Ou seja, o método da classe `Inventory` deve chamar o método da classe que vai gerar o relatório.
+**[Será validado que ao importar um arquivo csv simples será retornado com sucesso]**
+
+**[Será validado que ao importar um arquivo csv completo será retornado com sucesso]**
 
 #### 4 - Deve haver um método `import_data` dentro de uma classe `Inventory` do módulo `inventory`, capaz de ler um arquivo JSON passado como parâmetro de linha de comando
 
+- O método, quando receber um arquivo JSON, deve chamar o método de gerar relatório correspondente à entrada passada, `simples` ou `completo`. Ou seja, o método da classe `Inventory` deve chamar o método da classe que vai gerar o relatório.
+
 ##### As seguintes verificações serão feitas:
 
-- O método, quando receber um arquivo JSON, deve chamar o método de gerar relatório correspondente à entrada passada, `simples` ou `completo`. Ou seja, o método da classe `Inventory` deve chamar o método da classe que vai gerar o relatório.
+**[Será validado que ao importar um arquivo json simples será retornado com sucesso]**
+
+**[Será validado que ao importar um arquivo json completo será retornado com sucesso]**
 
 #### 5 - Deve haver um método `import_data` dentro de uma classe `Inventory` do módulo `inventory`, capaz de ler um arquivo XML passado como parâmetro  de linha de comando
 
+- O método, quando receber um arquivo XML, deve chamar o método de gerar relatório correspondente à entrada passada, `simples` ou `completo`. Ou seja, o método da classe `Inventory` deve chamar o método da classe que vai gerar o relatório.
+
 ##### As seguintes verificações serão feitas:
 
-- O método, quando receber um arquivo XML, deve chamar o método de gerar relatório correspondente à entrada passada, `simples` ou `completo`. Ou seja, o método da classe `Inventory` deve chamar o método da classe que vai gerar o relatório.
+**[Será validado que ao importar um arquivo xml simples será retornado com sucesso]**
+
+**[Será validado que ao importar um arquivo xml completo será retornado com sucesso]**
 
 #### 6 - Deve haver uma classe abstrata `Importer` no módulo import. Deve haver três classes herdeiras desta: `CsvImporter`, `JsonImporter` e `XmlImporter`, cada uma definida em seu respectivo módulo.
 
