@@ -74,6 +74,36 @@
       "identifier": "test_validar_importerdata_importar_um_arquivo_xml_completo",
       "description": "Será validado que ao importar um arquivo xml completo será retornado com sucesso",
       "bonus": false
+    },
+    {
+      "identifier": "test_validar_classe_csvimporter_esta_herdando_importer",
+      "description": "Será validado que a casse CsvImporter está herdando a classe Importer",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_classe_jsonimporter_esta_herdando_importer",
+      "description": "Será validado que a casse JsonImporter está herdando a classe Importer",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_classe_xmlimporter_esta_herdando_importer",
+      "description": "Será validado que a casse XmlImporter está herdando a classe Importer",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_classe_csvimporter_esta_importando_para_uma_lista",
+      "description": "Será validado que a classe CsvImporter esta importando os dados para uma lista",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_classe_jsonimporter_esta_importando_para_uma_lista",
+      "description": "Será validado que a classe JsonImporter esta importando os dados para uma lista",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_classe_xmlimporter_esta_importando_para_uma_lista",
+      "description": "Será validado que a classe XmlImporter esta importando os dados para uma lista",
+      "bonus": false
     }
   ]
 }

@@ -35,7 +35,7 @@ def stock():
         {
             "id": 4,
             "nome_do_produto": "Uricum acidum, Benzoicum acidum",
-            "nome_da_empresa": "Newton Laboratories, Inc.",
+            "nome_da_empresa": "Newton Laboratories",
             "data_de_fabricacao": "2019-11-08",
             "data_de_validade": "2019-11-25",
             "numero_de_serie": "FR38 9203 3060 400T QQ8B HHS0 Q46",
@@ -68,9 +68,9 @@ def test_validar_completereport_retorna_quantidade_de_estoque_correto(stock):
     report = CompleteReport.generate(stock)
     expected = (
         "Produtos Estocados por empresa: \n"
-        "- Forces of Nature, Inc.: 1\n"
-        "- sanofi-aventis U.S. LLC, Inc.: 2\n"
-        "- Newton Laboratories, Inc., Inc.: 1\n"
+        "- Forces of Nature: 1\n"
+        "- sanofi-aventis U.S. LLC: 2\n"
+        "- Newton Laboratories: 1\n"
     )
     assert expected in report
 
@@ -83,8 +83,8 @@ def test_validar_completereport_retorna_formato_correto(stock):
         "Empresa com maior quantidade de produtos "
         "estocados: sanofi-aventis U.S. LLC\n\n"
         "Produtos Estocados por empresa: \n"
-        "- Forces of Nature, Inc.: 1\n"
-        "- sanofi-aventis U.S. LLC, Inc.: 2\n"
-        "- Newton Laboratories, Inc., Inc.: 1\n"
+        "- Forces of Nature: 1\n"
+        "- sanofi-aventis U.S. LLC: 2\n"
+        "- Newton Laboratories: 1\n"
     )
     assert expected in report

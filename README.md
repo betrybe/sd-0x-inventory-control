@@ -340,8 +340,6 @@ Os arquivos **XML** seguem o seguinte modelo:
 
 #### 6 - Deve haver uma classe abstrata `Importer` no módulo import. Deve haver três classes herdeiras desta: `CsvImporter`, `JsonImporter` e `XmlImporter`, cada uma definida em seu respectivo módulo.
 
-##### As seguintes verificações serão feitas:
-
 - A classe abstrata deve definir a assinatura do método `import_data` a ser implementado por cada classe herdeira. Ela deve receber como parâmetro o nome do arquivo a ser importado.
 
 - O método `import_data` definida por cada classe herdeira deve lançar uma exceção caso a extensão do arquivo passado por parâmetro seja inválida. Por exemplo, quando se passa um CSV para o `JsonImporter`.
@@ -364,6 +362,20 @@ Os arquivos **XML** seguem o seguinte modelo:
 
 - A classe `Inventory` deve utilizar as classes definidas neste requisito para lidar com a lógica de importação, via **composição**.
 
+##### As seguintes verificações serão feitas:
+
+**[Será validado que a casse CsvImporter está herdando a classe Importer]**
+
+**[Será validado que a casse JsonImporter está herdando a classe Importer]**
+
+**[Será validado que a casse XmlImporter está herdando a classe Importer]**
+
+**[Será validado que a classe CsvImporter esta importando os dados para uma lista]**
+
+**[Será validado que a classe JsonImporter esta importando os dados para uma lista]**
+
+**[Será validado que a classe XmlImporter esta importando os dados para uma lista]**
+
 #### 7 - Deve haver uma classe `InventoryIterator` no módulo `inventory-iterator`, que implementa a interface de um iterator. A classe `Inventory` deve implementar o método `__iter__` associado a essa classe.
 
 ##### As seguintes verificações serão feitas:
@@ -376,10 +388,11 @@ Os arquivos **XML** seguem o seguinte modelo:
    iterator = iter(inventory)
    first_item = next(iterator)
    ```
+##### As seguintes verificações serão feitas:
 
 ## Requisitos bônus:
 
-#### 8 - A cobertura de testes do projeto deve ser de no mínimo 90%.
+#### 8 - Criar um menu .
 
 ##### As seguintes verificações serão feitas:
 
