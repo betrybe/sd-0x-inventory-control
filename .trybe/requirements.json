@@ -104,6 +104,23 @@
       "identifier": "test_validar_classe_xmlimporter_esta_importando_para_uma_lista",
       "description": "Será validado que a classe XmlImporter esta importando os dados para uma lista",
       "bonus": false
+    },
+    {
+      "identifier": "test_validar_extensao_invalida_do_csvimporter",
+      "description": "Será validado que ao enviar um arquivo com extensão incorreta para o CsvImporter irá gerar um erro",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_extensao_invalida_jsonimporter",
+      "description": "Será validado que ao enviar um arquivo com extensão incorreta para o JsonImporter irá gerar um erro",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_extensao_invalida_xmlimporter",
+      "description": "Será validado que ao enviar um arquivo com extensão incorreta para o XmlImporter irá gerar um erro",
+      "bonus": false
     }
+
+
   ]
 }
