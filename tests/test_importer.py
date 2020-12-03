@@ -112,7 +112,6 @@ def test_validar_classe_xmlimporter_esta_herdando_importer():
 
 def test_validar_classe_csvimporter_esta_importando_para_uma_lista():
     report = CsvImporter.import_data('inventory_report/data/inventory.csv')
-    print(report)
     assert DICT == report
 
 
@@ -123,7 +122,6 @@ def test_validar_extensao_invalida_do_csvimporter():
 
 def test_validar_classe_jsonimporter_esta_importando_para_uma_lista():
     report = JsonImporter.import_data('inventory_report/data/inventory.json')
-    print(report)
     assert DICT == report
 
 
@@ -134,7 +132,6 @@ def test_validar_extensao_invalida_jsonimporter():
 
 def test_validar_classe_xmlimporter_esta_importando_para_uma_lista():
     report = XmlImporter.import_data('inventory_report/data/inventory.xml')
-    print(report)
     assert DICT == report
 
 

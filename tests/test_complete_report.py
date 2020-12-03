@@ -51,7 +51,6 @@ def test_validar_completereport_retorna_data_de_fabricacao_mais_antiga(stock):
 
 def test_validar_completereport_retorna_validade_mais_proxima(stock):
     report = CompleteReport.generate(stock)
-    print(report)
     assert "Data de validade mais próxima: 2023-01-17" in report
 
 
