@@ -119,8 +119,41 @@
       "identifier": "test_validar_extensao_invalida_xmlimporter",
       "description": "Será validado que ao enviar um arquivo com extensão incorreta para o XmlImporter irá gerar um erro",
       "bonus": false
+    },
+    {
+      "identifier": "test_validar_menu_enviar_um_arquivo_csv_simples",
+      "description": "Será validado se o menu importa um arquivo csv simples",
+      "bonus": true
+    },
+    {
+      "identifier": "test_validar_menu_enviar_um_arquivo_csv_completo",
+      "description": "Será validado se o menu importa um arquivo csv completo",
+      "bonus": true
+    },
+    {
+      "identifier": "test_validar_menu_enviar_um_arquivo_json_simples",
+      "description": "Será validado se o menu importa um arquivo json simples",
+      "bonus": true
+    },
+    {
+      "identifier": "test_validar_menu_enviar_um_arquivo_json_completo",
+      "description": "Será validado se o menu importa um arquivo json completo",
+      "bonus": true
+    },
+    {
+      "identifier": "test_validar_menu_enviar_um_arquivo_xml_simples",
+      "description": "Será validado se o menu importa um arquivo xml simples",
+      "bonus": true
+    },
+    {
+      "identifier": "test_validar_menu_enviar_um_arquivo_xml_completo",
+      "description": "Será validado se o menu importa um arquivo xml completo",
+      "bonus": true
+    },
+    {
+      "identifier": "test_validar_menu_com_menos_argumentos",
+      "description": "Será validado se passar opcões a menos no menu irá retornar um erro",
+      "bonus": true
     }
-
-
   ]
 }

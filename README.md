@@ -360,7 +360,7 @@ Os arquivos **XML** seguem o seguinte modelo:
    ]
    ```
 
-- A classe `Inventory` deve utilizar as classes definidas neste requisito para lidar com a lógica de importação, via **composição**.
+
 
 ##### As seguintes verificações serão feitas:
 
@@ -384,6 +384,12 @@ Os arquivos **XML** seguem o seguinte modelo:
 
 #### 7 - Deve haver uma classe `InventoryIterator` no módulo `inventory-iterator`, que implementa a interface de um iterator. A classe `Inventory` deve implementar o método `__iter__` associado a essa classe.
 
+a classe inventory devera ser refatora em outro arquivo chamado `inventory_refactor.py`
+*********************
+do requisito 6
+- A classe `Inventory` deve utilizar as classes definidas neste requisito para lidar com a lógica de importação, via **composição**.
+
+*********************
 ##### As seguintes verificações serão feitas:
 
 - As classes `InventoryIterator` e `Inventory` devem implementar corretamente a interface de um iterator, de modo que o código abaixo nos dê o primeiro item da lista de dicionários com os dados importados:
@@ -408,7 +414,7 @@ Os arquivos **XML** seguem o seguinte modelo:
   - O arquivo com sua extenção .csv, .json ou .xml.
   - Se o relatório e "simples" ou "completo"
 
-- Deverá ser usado o metódo `import_data` do arquivo `inventory_report/inventoryRefactor.py` para verificar o tipo de arquivo e o formato do relatório.
+- Deverá ser usado o metódo `import_data` do arquivo `inventory_report/inventory_refactor.py` para verificar o tipo de arquivo e o formato do relatório.
 
 - Onde o resultado printado no console deverá ser esses:
   - Para o simples:
@@ -442,11 +448,19 @@ Os arquivos **XML** seguem o seguinte modelo:
 
 ##### As seguintes verificações serão feitas:
 
-- Todos os testes que envolvem mensagens na saída padrão ou de erro, devem ter sua saída redirecionada para Fakes com `StringIO`;
+**[Será validado se o menu importa um arquivo csv simples]**
 
-- Todos os testes que envolvem manipulação de arquivos criam Fakes com `StringIO`;
+**[Será validado se o menu importa um arquivo csv completo]**
 
-- A cobertura de testes é de no mínimo 90%.
+**[Será validado se o menu importa um arquivo json simples]**
+
+**[Será validado se o menu importa um arquivo json completo]**
+
+**[Será validado se o menu importa um arquivo xml simples]**
+
+**[Será validado se o menu importa um arquivo xml completo]**
+
+**[Será validado se passar opcões a menos no menu irá retornar um erro]**
 
 ---
 
