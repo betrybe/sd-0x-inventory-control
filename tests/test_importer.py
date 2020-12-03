@@ -2,6 +2,7 @@ from inventory_report.importer.importer import Importer
 from inventory_report.importer.csv_importer import CsvImporter
 from inventory_report.importer.json_importer import JsonImporter
 from inventory_report.importer.xml_importer import XmlImporter
+import pytest
 
 DICT = [
          {
@@ -115,13 +116,28 @@ def test_validar_classe_csvimporter_esta_importando_para_uma_lista():
     assert DICT == report
 
 
+def test_validar_extensao_invalida_do_csvimporter():
+    with pytest.raises(ValueError, match="Arquivo inválido"):
+        assert CsvImporter.import_data('inventory_report/data/inventory.json')
+
+
 def test_validar_classe_jsonimporter_esta_importando_para_uma_lista():
     report = JsonImporter.import_data('inventory_report/data/inventory.json')
     print(report)
     assert DICT == report
 
 
+def test_validar_extensao_invalida_jsonimporter():
+    with pytest.raises(ValueError, match="Arquivo inválido"):
+        assert JsonImporter.import_data('inventory_report/data/inventory.csv')
+
+
 def test_validar_classe_xmlimporter_esta_importando_para_uma_lista():
     report = XmlImporter.import_data('inventory_report/data/inventory.xml')
     print(report)
     assert DICT == report
+
+
+def test_validar_extensao_invalida_xmlimporter():
+    with pytest.raises(ValueError, match="Arquivo inválido"):
+        assert JsonImporter.import_data('inventory_report/data/inventory.csv')

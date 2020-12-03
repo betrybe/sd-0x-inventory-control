@@ -376,6 +376,12 @@ Os arquivos **XML** seguem o seguinte modelo:
 
 **[Será validado que a classe XmlImporter esta importando os dados para uma lista]**
 
+**[Será validado que ao enviar um arquivo com extensão incorreta para o CsvImporter irá gerar um erro]**
+
+**[Será validado que ao enviar um arquivo com extensão incorreta para o JsonImporter irá gerar um erro]**
+
+**[Será validado que ao enviar um arquivo com extensão incorreta para o XmlImporter irá gerar um erro]**
+
 #### 7 - Deve haver uma classe `InventoryIterator` no módulo `inventory-iterator`, que implementa a interface de um iterator. A classe `Inventory` deve implementar o método `__iter__` associado a essa classe.
 
 ##### As seguintes verificações serão feitas:
@@ -392,7 +398,47 @@ Os arquivos **XML** seguem o seguinte modelo:
 
 ## Requisitos bônus:
 
-#### 8 - Criar um menu .
+#### 8 - Criar um menu no arquivo `inventory_report/main.py` que ao inserir as informações necessárias, as ações adequadas devem ser disparadas.
+
+- Onde o comando no menu executado será:
+
+`inventory_report inventory_report/data/inventory.json simples`
+
+- O menu terá duas entradas
+  - O arquivo com sua extenção .csv, .json ou .xml.
+  - Se o relatório e "simples" ou "completo"
+
+- Deverá ser usado o metódo `import_data` do arquivo `inventory_report/inventoryRefactor.py` para verificar o tipo de arquivo e o formato do relatório.
+
+- Onde o resultado printado no console deverá ser esses:
+  - Para o simples:
+
+  ```json
+  Data de fabricação mais antiga: 2019-09-06
+  Data de validade mais próxima: 2022-09-17
+  Empresa com maior quantidade de produtos estocados: Target Corporation
+  ```
+  
+  - Para o completo:
+  
+  ```json
+  Data de fabricação mais antiga: 2019-09-06
+  Data de validade mais próxima: 2022-09-17
+  Empresa com maior quantidade de produtos estocados: Target Corporation
+  
+  Produtos Estocados por empresa: 
+  - Target Corporation: 2
+  - Galena Biopharma: 3
+  - Cantrell Drug Company: 3
+  - Moore Medical LLC: 1
+  - REMEDYREPACK: 1
+  ```
+
+- Caso a tenha menos de três argumentos, exiba a mensagem de erro "Verifique os argumentos" na `stderr`.
+
+📌 A função `sys.argv` deve ser utilizada para receber a entrada de dados da pessoa usuária.
+
+✍️  Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `inventory_report parametro_1 parametro_2`, assim você conseguirá interagir com o menu.
 
 ##### As seguintes verificações serão feitas:
 
