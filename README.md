@@ -226,7 +226,7 @@ Os arquivos **XML** seguem o seguinte modelo:
 
 ## Requisitos obrigatórios:
 
-#### 1 - Deve haver um método `generate` numa classe `SimpleReport` do módulo `simple-report`. Esse método deverá receber dados numa lista contendo estruturas do tipo `dict` e deverá gerar uma saída para a linha de comando.
+#### 1 -Criar um método `generate` numa classe `SimpleReport` do módulo `simple-report`. Esse método deverá receber dados numa lista contendo estruturas do tipo `dict` e deverá gerar uma saída para a linha de comando.
 
 - O método deve receber de parâmetro uma lista de dicionários no seguinte formato:
 
@@ -264,7 +264,7 @@ Os arquivos **XML** seguem o seguinte modelo:
 
 **[Será validado que é possível que a classe `SimpleReport` liste o formato correto]**
 
-#### 2 - Deve haver um método `generate` numa classe `CompleteReport` do módulo `complete-report`. Esse método deverá receber dados numa lista contendo estruturas do tipo `dict` e deverá gerar uma saída para a linha de comando.
+#### 2 - Criar um método `generate` numa classe `CompleteReport` do módulo `complete-report`. Esse método deverá receber dados numa lista contendo estruturas do tipo `dict` e deverá gerar uma saída para a linha de comando.
 
 - A classe `CompleteReport` deve herdar o método (`generate`) da classe `SimpleReport`, de modo a especializar seu comportamento.
 
@@ -308,7 +308,7 @@ Os arquivos **XML** seguem o seguinte modelo:
 
 **[Será validado que é possível que a classe `CompleteReport` liste o formato correto]**
 
-#### 3 - Deve haver um método `import_data` dentro de uma classe `Inventory` do módulo `inventory`, capaz de ler um arquivo CSV passado como parâmetro de linha de comando
+#### 3 - Criar um método `import_data` dentro de uma classe `Inventory` do módulo `inventory`, capaz de ler um arquivo CSV passado como parâmetro de linha de comando
 
 - O método, quando receber um arquivo CSV, deve chamar o método de gerar relatório correspondente à entrada passada, `simples` ou `completo`. Ou seja, o método da classe `Inventory` deve chamar o método da classe que vai gerar o relatório.
 
@@ -318,7 +318,7 @@ Os arquivos **XML** seguem o seguinte modelo:
 
 **[Será validado que ao importar um arquivo csv completo será retornado com sucesso]**
 
-#### 4 - Deve haver um método `import_data` dentro de uma classe `Inventory` do módulo `inventory`, capaz de ler um arquivo JSON passado como parâmetro de linha de comando
+#### 4 - Criar um método `import_data` dentro de uma classe `Inventory` do módulo `inventory`, capaz de ler um arquivo JSON passado como parâmetro de linha de comando
 
 - O método, quando receber um arquivo JSON, deve chamar o método de gerar relatório correspondente à entrada passada, `simples` ou `completo`. Ou seja, o método da classe `Inventory` deve chamar o método da classe que vai gerar o relatório.
 
@@ -338,7 +338,7 @@ Os arquivos **XML** seguem o seguinte modelo:
 
 **[Será validado que ao importar um arquivo xml completo será retornado com sucesso]**
 
-#### 6 - Deve haver uma classe abstrata `Importer` no módulo import. Deve haver três classes herdeiras desta: `CsvImporter`, `JsonImporter` e `XmlImporter`, cada uma definida em seu respectivo módulo.
+#### 6 - Criar uma classe abstrata `Importer` no módulo import. Deve haver três classes herdeiras desta: `CsvImporter`, `JsonImporter` e `XmlImporter`, cada uma definida em seu respectivo módulo.
 
 - A classe abstrata deve definir a assinatura do método `import_data` a ser implementado por cada classe herdeira. Ela deve receber como parâmetro o nome do arquivo a ser importado.
 
@@ -360,8 +360,6 @@ Os arquivos **XML** seguem o seguinte modelo:
    ]
    ```
 
-
-
 ##### As seguintes verificações serão feitas:
 
 **[Será validado que a casse CsvImporter está herdando a classe Importer]**
@@ -382,25 +380,39 @@ Os arquivos **XML** seguem o seguinte modelo:
 
 **[Será validado que ao enviar um arquivo com extensão incorreta para o XmlImporter irá gerar um erro]**
 
-#### 7 - Deve haver uma classe `InventoryIterator` no módulo `inventory-iterator`, que implementa a interface de um iterator. A classe `Inventory` deve implementar o método `__iter__` associado a essa classe.
+#### 7 - Criar uma classe `InventoryIterator` no módulo `inventory-iterator`, que implementa a interface de um iterator. A classe `Inventory` deve implementar o método `__iter__` associado a essa classe.
 
-a classe inventory devera ser refatora em outro arquivo chamado `inventory_refactor.py`
-*********************
-do requisito 6
-- A classe `Inventory` deve utilizar as classes definidas neste requisito para lidar com a lógica de importação, via **composição**.
+- A classe `Inventory` deverá ser refatorada em outro arquivo chamado `inventory_report/inventory/inventory_refactor.py`. Nesse arquivo você irá refatorar a classe Inventory e passar chamar essa classe de `InventoryRefactor`
 
-*********************
-##### As seguintes verificações serão feitas:
+- A classe `InventoryRefactor` deve utilizar as classes definidas no requisito 6 para lidar com a lógica de importação, via **composição**.
 
-- As classes `InventoryIterator` e `Inventory` devem implementar corretamente a interface de um iterator, de modo que o código abaixo nos dê o primeiro item da lista de dicionários com os dados importados:
+- As classes `InventoryIterator` e `InventoryRefactor` devem implementar corretamente a interface de um iterator, de modo que o código abaixo nos dê o primeiro item da lista de dicionários com os dados importados:
+
+- É necessário gravar na instância quando importar os dados e tambem ao gravar novos dados expandir esses mesmos dados.
+
+- As variáveis e os método devem ser públicos.
 
    ```python
-   # ... Acima, um código que instancia e importa um arquivo para a variável `inventory` e importações do módulo Iterator e Iterable
+   # ... Acima, um código que instância e importa um arquivo para a variável `inventory` e importações do módulo Iterator e Iterable
 
    iterator = iter(inventory)
    first_item = next(iterator)
    ```
+
 ##### As seguintes verificações serão feitas:
+
+**[Será validado que inter é instanciado por iterator]**
+
+**[Será validado que é possivel interar o primeiro item da lista usando csv]**
+
+**[Será validado que é possivel interar o primeiro item da lista usando json]**
+
+**[Será validado que é possivel interar o primeiro item da lista usando xml]**
+
+**[Será validado que é possivel expandir duas listas de dados]**
+
+**[Será validado que não é possivel enviar arquivo inválido]**
+
 
 ## Requisitos bônus:
 

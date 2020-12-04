@@ -154,6 +154,36 @@
       "identifier": "test_validar_menu_com_menos_argumentos",
       "description": "Será validado se passar opcões a menos no menu irá retornar um erro",
       "bonus": true
+    },
+    {
+      "identifier": "Será validado que inter é instanciado por iterator",
+      "description": "test_validar_inter_e_instanciado_por_iterator",
+      "bonus": false
+    },
+    {
+      "identifier": "Será validado que é possivel interar o primeiro item da lista usando csv",
+      "description": "test_validar_iterar_primeiro_item_com_csv",
+      "bonus": false
+    },
+    {
+      "identifier": "Será validado que é possivel interar o primeiro item da lista usando json",
+      "description": "test_validar_iterar_primeiro_item_com_json",
+      "bonus": false
+    },
+    {
+      "identifier": "Será validado que é possivel interar o primeiro item da lista usando xml",
+      "description": "test_validar_iterar_primeiro_item_com_xml",
+      "bonus": false
+    },
+    {
+      "identifier": "Será validado que é possivel expandir duas listas de dados",
+      "description": "test_validar_iterar_expandir_com_dois_arquivos",
+      "bonus": false
+    },
+    {
+      "identifier": "Será validado que não é possivel enviar arquivo inválido",
+      "description": "test_validar_enviar_arquivo_extensao_invalia",
+      "bonus": false
     }
   ]
 }
