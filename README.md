@@ -423,7 +423,7 @@ Os arquivos **XML** seguem o seguinte modelo:
 `inventory_report inventory_report/data/inventory.json simples`
 
 - O menu terá duas entradas
-  - O arquivo com sua extenção .csv, .json ou .xml.
+  - O arquivo com sua extensão .csv, .json ou .xml.
   - Se o relatório e "simples" ou "completo"
 
 - Deverá ser usado o metódo `import_data` do arquivo `inventory_report/inventory_refactor.py` para verificar o tipo de arquivo e o formato do relatório.
