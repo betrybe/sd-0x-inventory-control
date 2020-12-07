@@ -24,7 +24,7 @@ Nota: após terminar o trabalho, para desativar o ambiente virtual digite `deact
 
 3. Instale as dependências
 
-- `python3 -m pip install -r requirements.txt`
+- `python3 -m pip install -r dev-requirements.txt`
 
 4. Crie uma branch a partir da branch `master`
 
@@ -89,11 +89,11 @@ Esses dados de estoque poderão ser obtidos de diversas formas, sendo elas:
 
 - Através da importação de um arquivo `XML`;
 
-Além disso, o relatório final deverá ser gerável em duas versões: simples e completa.
+Além disso, o relatório final deverá poder ser gerado em duas versões: simples e completa.
 
 ### Como o projeto deve ser executável
 
-Seu programa deverá ser executável **via linha de comando** com o comando `python3 main.py argumento1 argumento2`:
+Seu programa deverá ser executável **via linha de comando** com o comando `inventory_report argumento1 argumento2`:
 
 - O **argumento 1** deve receber o caminho de um arquivo a ser importado. O arquivo pode ser um `csv`, `json` ou `xml`.
 
@@ -107,35 +107,39 @@ Este repositório já contém um _template_ com a estrutura de diretórios e arq
 
 ```
 .
+├── dev-requirements.txt
+├── inventory_report
+│   ├── data
+│   │   ├── inventory.csv
+│   │   ├── inventory.json
+│   │   └── inventory.xml
+│   ├── importer
+│   │   ├── csv_importer.py
+│   │   ├── importer.py
+│   │   ├── json_importer.py
+│   │   └── xml_importer.py
+│   ├── inventory
+│   │   ├── inventory_iterator.py
+│   │   └── inventory.py
+│   ├── main.py
+│   └── reports
+│       ├── complete_report.py
+│       └── simple_report.py
+├── pyproject.toml
 ├── README.md
-├── setup.cfg
 ├── requirements.txt
-├── main.py
-├── data
-│   ├── inventory_20200823.csv
-│   ├── inventory_20200823.json
-│   └── inventory_20200823.xml
-├── inventory
-│   ├── inventory.py
-│   └── inventory_iterator.py
-├── importer
-│   ├── importer.py
-│   ├── csv_importer.py
-│   ├── json_importer.py
-│   └── xml_importer.py
-├── reports
-│   ├── simple_report.py
-│   └── complete_report.py
-├── tests
-│   ├── test_main.py
-│   ├── test_inventory.py
-│   ├── test_inventory_iterator.py
-│   ├── test_importer.py
-│   ├── test_csv_importer.py
-│   ├── test_json_importer.py
-│   ├── test_xml_importer.py
-│   ├── test_simple_report.py
-│   └── test_complete_report.py
+├── setup.cfg
+├── setup.py
+└── tests
+    ├── __init__.py
+    ├── test_complete_report.py
+    ├── test_csv_importer.py
+    ├── test_importer.py
+    ├── test_inventory.py
+    ├── test_json_importer.py
+    ├── test_main.py
+    ├── test_simple_report.py
+    └── test_xml_importer.py
 ```
 
 Apesar do projeto já possuir uma estrutura base, você quem deve implementar tanto as classes quanto os testes. Novos arquivos podem ser criados conforme a necessidade.
@@ -147,10 +151,10 @@ $ python3 -m venv .venv
 
 $ source .venv/bin/activate
 
-$ python3 -m pip install -r requirements.txt
+$ python3 -m pip install -r dev-requirements.txt
 ```
 
-O arquivo `requirements.txt` contém todos as dependências que serão utilizadas no projeto, ele está agindo como se fosse um `package.json` de um projeto `Node.js`. Com as dependências já instaladas, para executar os testes basta usar o comando:
+O arquivo `dev-requirements.txt` contém todos as dependências que serão utilizadas no projeto, ele está agindo como se fosse um `package.json` de um projeto `Node.js`. Com as dependências já instaladas, para executar os testes basta usar o comando:
 
 ```bash
 $ python3 -m pytest
@@ -222,9 +226,7 @@ Os arquivos **XML** seguem o seguinte modelo:
 
 ## Requisitos obrigatórios:
 
-#### 1 - Deve haver um método `generate` numa classe `SimpleReport` do módulo `simple-report`. Esse método deverá receber dados numa lista contendo estruturas do tipo `dict` e deverá gerar uma saída para a linha de comando.
-
-##### As seguintes verificações serão feitas:
+#### 1 -Criar um método `generate` numa classe `SimpleReport` do módulo `simple-report`. Esse método deverá receber dados numa lista contendo estruturas do tipo `dict` e deverá gerar uma saída para a linha de comando.
 
 - O método deve receber de parâmetro uma lista de dicionários no seguinte formato:
 
@@ -252,9 +254,17 @@ Os arquivos **XML** seguem o seguinte modelo:
 
 **Dica**: O módulo [datetime](https://docs.python.org/3/library/datetime.html) vai te ajudar.
 
-#### 2 - Deve haver um método `generate` numa classe `CompleteReport` do módulo `complete-report`. Esse método deverá receber dados numa lista contendo estruturas do tipo `dict` e deverá gerar uma saída para a linha de comando.
-
 ##### As seguintes verificações serão feitas:
+
+**[Será validado que é possível que a classe `SimpleReport` liste a data de fabricação mais antiga]**
+
+**[Será validado que é possível que a classe `SimpleReport` liste a validade de fabricação mais próxima]**
+
+**[Será validado que é possível que a classe `SimpleReport` liste a empresa com maior estoque]**
+
+**[Será validado que é possível que a classe `SimpleReport` liste o formato correto]**
+
+#### 2 - Criar um método `generate` numa classe `CompleteReport` do módulo `complete-report`. Esse método deverá receber dados numa lista contendo estruturas do tipo `dict` e deverá gerar uma saída para a linha de comando.
 
 - A classe `CompleteReport` deve herdar o método (`generate`) da classe `SimpleReport`, de modo a especializar seu comportamento.
 
@@ -286,27 +296,49 @@ Os arquivos **XML** seguem o seguinte modelo:
    - Forces of Nature: QUANTIDADE
    ```
 
-#### 3 - Deve haver um método `import_data` dentro de uma classe `Inventory` do módulo `inventory`, capaz de ler um arquivo CSV passado como parâmetro de linha de comando
-
 ##### As seguintes verificações serão feitas:
+
+**[Será validado que é possível que a classe `CompleteReport` liste a data de fabricação mais antiga]**
+
+**[Será validado que é possível que a classe `CompleteReport` liste a validade de fabricação mais próxima]**
+
+**[Será validado que é possível que a classe `CompleteReport` liste a empresa com maior estoque]**
+
+**[Será validado que é possível que a classe `CompleteReport` liste a quantidade de estoque correto]**
+
+**[Será validado que é possível que a classe `CompleteReport` liste o formato correto]**
+
+#### 3 - Criar um método `import_data` dentro de uma classe `Inventory` do módulo `inventory`, capaz de ler um arquivo CSV passado como parâmetro de linha de comando
 
 - O método, quando receber um arquivo CSV, deve chamar o método de gerar relatório correspondente à entrada passada, `simples` ou `completo`. Ou seja, o método da classe `Inventory` deve chamar o método da classe que vai gerar o relatório.
 
-#### 4 - Deve haver um método `import_data` dentro de uma classe `Inventory` do módulo `inventory`, capaz de ler um arquivo JSON passado como parâmetro de linha de comando
-
 ##### As seguintes verificações serão feitas:
+
+**[Será validado que ao importar um arquivo csv simples será retornado com sucesso]**
+
+**[Será validado que ao importar um arquivo csv completo será retornado com sucesso]**
+
+#### 4 - Criar um método `import_data` dentro de uma classe `Inventory` do módulo `inventory`, capaz de ler um arquivo JSON passado como parâmetro de linha de comando
 
 - O método, quando receber um arquivo JSON, deve chamar o método de gerar relatório correspondente à entrada passada, `simples` ou `completo`. Ou seja, o método da classe `Inventory` deve chamar o método da classe que vai gerar o relatório.
 
-#### 5 - Deve haver um método `import_data` dentro de uma classe `Inventory` do módulo `inventory`, capaz de ler um arquivo XML passado como parâmetro  de linha de comando
-
 ##### As seguintes verificações serão feitas:
+
+**[Será validado que ao importar um arquivo json simples será retornado com sucesso]**
+
+**[Será validado que ao importar um arquivo json completo será retornado com sucesso]**
+
+#### 5 - Deve haver um método `import_data` dentro de uma classe `Inventory` do módulo `inventory`, capaz de ler um arquivo XML passado como parâmetro  de linha de comando
 
 - O método, quando receber um arquivo XML, deve chamar o método de gerar relatório correspondente à entrada passada, `simples` ou `completo`. Ou seja, o método da classe `Inventory` deve chamar o método da classe que vai gerar o relatório.
 
-#### 6 - Deve haver uma classe abstrata `Importer` no módulo import. Deve haver três classes herdeiras desta: `CsvImporter`, `JsonImporter` e `XmlImporter`, cada uma definida em seu respectivo módulo.
-
 ##### As seguintes verificações serão feitas:
+
+**[Será validado que ao importar um arquivo xml simples será retornado com sucesso]**
+
+**[Será validado que ao importar um arquivo xml completo será retornado com sucesso]**
+
+#### 6 - Criar uma classe abstrata `Importer` no módulo import. Deve haver três classes herdeiras desta: `CsvImporter`, `JsonImporter` e `XmlImporter`, cada uma definida em seu respectivo módulo.
 
 - A classe abstrata deve definir a assinatura do método `import_data` a ser implementado por cada classe herdeira. Ela deve receber como parâmetro o nome do arquivo a ser importado.
 
@@ -328,32 +360,119 @@ Os arquivos **XML** seguem o seguinte modelo:
    ]
    ```
 
-- A classe `Inventory` deve utilizar as classes definidas neste requisito para lidar com a lógica de importação, via **composição**.
-
-#### 7 - Deve haver uma classe `InventoryIterator` no módulo `inventory-iterator`, que implementa a interface de um iterator. A classe `Inventory` deve implementar o método `__iter__` associado a essa classe.
-
 ##### As seguintes verificações serão feitas:
 
-- As classes `InventoryIterator` e `Inventory` devem implementar corretamente a interface de um iterator, de modo que o código abaixo nos dê o primeiro item da lista de dicionários com os dados importados:
+**[Será validado que a casse CsvImporter está herdando a classe Importer]**
+
+**[Será validado que a casse JsonImporter está herdando a classe Importer]**
+
+**[Será validado que a casse XmlImporter está herdando a classe Importer]**
+
+**[Será validado que a classe CsvImporter esta importando os dados para uma lista]**
+
+**[Será validado que a classe JsonImporter esta importando os dados para uma lista]**
+
+**[Será validado que a classe XmlImporter esta importando os dados para uma lista]**
+
+**[Será validado que ao enviar um arquivo com extensão incorreta para o CsvImporter irá gerar um erro]**
+
+**[Será validado que ao enviar um arquivo com extensão incorreta para o JsonImporter irá gerar um erro]**
+
+**[Será validado que ao enviar um arquivo com extensão incorreta para o XmlImporter irá gerar um erro]**
+
+#### 7 - Criar uma classe `InventoryIterator` no módulo `inventory-iterator`, que implementa a interface de um iterator. A classe `Inventory` deve implementar o método `__iter__` associado a essa classe.
+
+- A classe `Inventory` deverá ser refatorada em outro arquivo chamado `inventory_report/inventory/inventory_refactor.py`. Nesse arquivo você irá refatorar a classe Inventory e passar chamar essa classe de `InventoryRefactor`
+
+- A classe `InventoryRefactor` deve utilizar as classes definidas no requisito 6 para lidar com a lógica de importação, via **composição**.
+
+- As classes `InventoryIterator` e `InventoryRefactor` devem implementar corretamente a interface de um iterator, de modo que o código abaixo nos dê o primeiro item da lista de dicionários com os dados importados:
+
+- É necessário gravar na instância quando importar os dados e tambem ao gravar novos dados expandir esses mesmos dados.
+
+- As variáveis e os método devem ser públicos.
 
    ```python
-   # ... Acima, um código que instancia e importa um arquivo para a variável `inventory` e importações do módulo Iterator e Iterable
+   # ... Acima, um código que instância e importa um arquivo para a variável `inventory` e importações do módulo Iterator e Iterable
 
    iterator = iter(inventory)
    first_item = next(iterator)
    ```
 
+##### As seguintes verificações serão feitas:
+
+**[Será validado que inter é instanciado por iterator]**
+
+**[Será validado que é possivel interar o primeiro item da lista usando csv]**
+
+**[Será validado que é possivel interar o primeiro item da lista usando json]**
+
+**[Será validado que é possivel interar o primeiro item da lista usando xml]**
+
+**[Será validado que é possivel expandir duas listas de dados]**
+
+**[Será validado que não é possivel enviar arquivo inválido]**
+
+
 ## Requisitos bônus:
 
-#### 8 - A cobertura de testes do projeto deve ser de no mínimo 90%.
+#### 8 - Criar um menu no arquivo `inventory_report/main.py` que ao inserir as informações necessárias, as ações adequadas devem ser disparadas.
+
+- Onde o comando no menu executado será:
+
+`inventory_report inventory_report/data/inventory.json simples`
+
+- O menu terá duas entradas
+  - O arquivo com sua extenção .csv, .json ou .xml.
+  - Se o relatório e "simples" ou "completo"
+
+- Deverá ser usado o metódo `import_data` do arquivo `inventory_report/inventory_refactor.py` para verificar o tipo de arquivo e o formato do relatório.
+
+- Onde o resultado printado no console deverá ser esses:
+  - Para o simples:
+
+  ```json
+  Data de fabricação mais antiga: 2019-09-06
+  Data de validade mais próxima: 2022-09-17
+  Empresa com maior quantidade de produtos estocados: Target Corporation
+  ```
+  
+  - Para o completo:
+  
+  ```json
+  Data de fabricação mais antiga: 2019-09-06
+  Data de validade mais próxima: 2022-09-17
+  Empresa com maior quantidade de produtos estocados: Target Corporation
+  
+  Produtos Estocados por empresa: 
+  - Target Corporation: 2
+  - Galena Biopharma: 3
+  - Cantrell Drug Company: 3
+  - Moore Medical LLC: 1
+  - REMEDYREPACK: 1
+  ```
+
+- Caso a tenha menos de três argumentos, exiba a mensagem de erro "Verifique os argumentos" na `stderr`.
+
+📌 A função `sys.argv` deve ser utilizada para receber a entrada de dados da pessoa usuária.
+
+✍️  Teste manual: dentro de um ambiente virtual onde seu projeto foi configurado, digite o comando `inventory_report parametro_1 parametro_2`, assim você conseguirá interagir com o menu.
 
 ##### As seguintes verificações serão feitas:
 
-- Todos os testes que envolvem mensagens na saída padrão ou de erro, devem ter sua saída redirecionada para Fakes com `StringIO`;
+**[Será validado se o menu importa um arquivo csv simples]**
 
-- Todos os testes que envolvem manipulação de arquivos criam Fakes com `StringIO`;
+**[Será validado se o menu importa um arquivo csv completo]**
 
-- A cobertura de testes é de no mínimo 90%.
+**[Será validado se o menu importa um arquivo json simples]**
+
+**[Será validado se o menu importa um arquivo json completo]**
+
+**[Será validado se o menu importa um arquivo xml simples]**
+
+**[Será validado se o menu importa um arquivo xml completo]**
+
+**[Será validado se passar opcões a menos no menu irá retornar um erro]**
 
 ---
 
