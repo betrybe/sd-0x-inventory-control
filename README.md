@@ -291,6 +291,7 @@ Os arquivos **XML** seguem o seguinte modelo:
    Data de fabricação mais antiga: YYYY-MM-DD
    Data de validade mais próxima: YYYY-MM-DD
    Empresa com maior quantidade de produtos estocados: NOME DA EMPRESA
+
    Produtos estocados por empresa:
    - Physicians Total Care, Inc.: QUANTIDADE
    - Newton Laboratories, Inc.: QUANTIDADE
@@ -443,7 +444,7 @@ first_item = next(iterator)
   Data de validade mais próxima: 2022-09-17
   Empresa com maior quantidade de produtos estocados: Target Corporation
 
-  Produtos Estocados por empresa:
+  Produtos estocados por empresa:
   - Target Corporation: 2
   - Galena Biopharma: 3
   - Cantrell Drug Company: 3
