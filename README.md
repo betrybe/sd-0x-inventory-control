@@ -1,3 +1,7 @@
+### Termos de acordos
+
+Ao iniciar este projeto, você concorda com as diretrizes do Código de Ética e Conduta e do Manual da Pessoa Estudante da Trybe.
+
 # Boas vindas ao repositório do projeto de Relatório de Estoque!
 
 Você já usa o GitHub diariamente para desenvolver os exercícios, certo? Agora, para desenvolver os projetos, você deverá seguir as instruções a seguir. Fique atento a cada passo e, se tiver qualquer dúvida, nos envie por _Slack_! #vqv 🚀
@@ -6,62 +10,49 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 
 ---
 
-## Instruções para entregar seu projeto:
+## SUMÁRIO
 
-### ANTES DE COMEÇAR A DESENVOLVER:
+- [Habilidades](#habilidades)
+- [O que deverá ser desenvolvido](#o-que-deverá-ser-desenvolvido)
+- [Data de entrega](#data-de-entrega)
+- [Como desenvolver](#como-desenvolver)
+  - [Antes de começar a desenvolver](#antes-de-começar-a-desenvolver)
+- [Requisitos do projeto](#requisitos-do-projeto)
+  - [Linter](#linter)
+  - [Execução de testes de requisito](#execução-de-testes-de-requisito)
+- [Lista de requisitos](#lista-de-requisitos)
+  - [1 - Criar um método `generate` numa classe `SimpleReport` do módulo `inventory_report/reports/simple_report.py`. Esse método deverá receber dados numa lista contendo estruturas do tipo `dict` e deverá retornar uma string formatada como um relatório](#1---criar-um-método-generate-numa-classe-simplereport-do-módulo-inventory_reportreportssimple_reportpy-esse-método-deverá-receber-dados-numa-lista-contendo-estruturas-do-tipo-dict-e-deverá-retornar-uma-string-formatada-como-um-relatório)
+  - [2 - Criar um método `generate` numa classe `CompleteReport` do módulo `inventory_report/reports/complete_report.py`. Esse método deverá receber dados numa lista contendo estruturas do tipo `dict` e deverá retornar uma string formatada como um relatório](#2---criar-um-método-generate-numa-classe-completereport-do-módulo-inventory_reportreportscomplete_reportpy-esse-método-deverá-receber-dados-numa-lista-contendo-estruturas-do-tipo-dict-e-deverá-retornar-uma-string-formatada-como-um-relatório)
+  - [3 - Criar um método `import_data` dentro de uma classe `Inventory` do módulo `inventory_report/inventory/inventory.py`, capaz de ler um arquivo CSV o qual o caminho é passado como parâmetro](#3---criar-um-método-import_data-dentro-de-uma-classe-inventory-do-módulo-inventory_reportinventoryinventorypy-capaz-de-ler-um-arquivo-csv-o-qual-o-caminho-é-passado-como-parâmetro)
+  - [4 - Criar um método `import_data` dentro de uma classe `Inventory` do módulo `inventory_report/inventory/inventory.py`, capaz de ler um arquivo JSON o qual o caminho é passado como parâmetro](#4---criar-um-método-import_data-dentro-de-uma-classe-inventory-do-módulo-inventory_reportinventoryinventorypy-capaz-de-ler-um-arquivo-json-o-qual-o-caminho-é-passado-como-parâmetro)
+  - [5 - Criar um método `import_data` dentro de uma classe `Inventory` do módulo `inventory_report/inventory/inventory.py`, capaz de ler um arquivo XML o qual o caminho é passado como parâmetro](#5---criar-um-método-import_data-dentro-de-uma-classe-inventory-do-módulo-inventory_reportinventoryinventorypy-capaz-de-ler-um-arquivo-xml-o-qual-o-caminho-é-passado-como-parâmetro)
+  - [6 - Criar uma classe abstrata `Importer` no módulo `inventory_report/importer/importer.py`, que terá três classes herdeiras: `CsvImporter`, `JsonImporter` e `XmlImporter`, cada uma definida em seu respectivo módulo](#6---criar-uma-classe-abstrata-importer-no-módulo-inventory_reportimporterimporterpy-que-terá-três-classes-herdeiras-csvimporter-jsonimporter-e-xmlimporter-cada-uma-definida-em-seu-respectivo-módulo)
+  - [7 - Criar uma classe `InventoryIterator` no módulo `inventory_report/inventory/inventory_iterator.py`, que implementa a interface de um iterator (`Iterator`). A classe `InventoryRefactor` deve implementar o método `__iter__`, que retornará este iterador](#7---criar-uma-classe-inventoryiterator-no-módulo-inventory_reportinventoryinventory_iteratorpy-que-implementa-a-interface-de-um-iterator-iterator-a-classe-inventoryrefactor-deve-implementar-o-método-__iter__-que-retornará-este-iterador)
+  - [8 - Preencha a função `main` no módulo `inventory_report/main.py` que ao inserir as informações necessárias, as ações adequadas devem ser disparadas](#8---preencha-a-função-main-no-módulo-inventory_reportmainpy-que-ao-inserir-as-informações-necessárias-as-ações-adequadas-devem-ser-disparadas)
+- [Instruções para entregar seu projeto](#instruções-para-entregar-seu-projeto)
+  - [Durante o desenvolvimento](#durante-o-desenvolvimento)
+  - [Depois de terminar o desenvolvimento (opcional)](#depois-de-terminar-o-desenvolvimento-opcional)
+  - [Revisando um Pull Request](#revisando-um-pull-request)
+- [Avisos finais](#avisos-finais)
 
-1. Clone o repositório
+---
 
-- `git clone git@github.com:tryber/sd-0x-inventory-report.git`.
-- Entre na pasta do repositório que você acabou de clonar:
-  - `sd-0x-inventory-report`
+## Habilidades
 
-2. Crie o ambiente virtual para o projeto
+Nesse projeto, você será capaz de:
 
-- `python3 -m venv .venv && source .venv/bin/activate`
+- Você vai aprender sobre paradigmas de programação
+- Conceitos de OO na prática, criando classes e instâncias
+- Leitura e escria de arquivos
 
-Nota: após terminar o trabalho, para desativar o ambiente virtual digite `deactivate`
+---
 
-3. Instale as dependências
+## Data de entrega
 
-- `python3 -m pip install -r dev-requirements.txt`
+  - Projeto individual;
 
-4. Crie uma branch a partir da branch `master`
-
-- Verifique que você está na branch `master`
-  - Exemplo: `git branch`
-- Se não estiver, mude para a branch `master`
-  - Exemplo: `git checkout master`
-- Agora crie uma branch à qual você vai submeter os `commits` do seu projeto
-  - Você deve criar uma branch no seguinte formato: `nome-github-nome-do-projeto`
-  - Exemplo: `git checkout -b exemplo-inventory-report`
-
-5. Adicione as mudanças ao _stage_ do Git e faça um `commit`
-
-- Verifique que as mudanças ainda não estão no _stage_
-  - Exemplo: `git status` (deve aparecer listada a pasta _exemplo_ em vermelho)
-- Adicione o novo arquivo ao _stage_ do Git
-  - Exemplo:
-    - `git add .` (adicionando todas as mudanças - _que estavam em vermelho_ - ao stage do Git)
-    - `git status` (deve aparecer listado o arquivo _exemplo/README.md_ em verde)
-- Faça o `commit` inicial
-  - Exemplo:
-    - `git commit -m 'iniciando o projeto inventory-report'` (fazendo o primeiro commit)
-    - `git status` (deve aparecer uma mensagem tipo _nothing to commit_ )
-
-6. Adicione a sua branch com o novo `commit` ao repositório remoto
-
-- Usando o exemplo anterior: `git push -u origin exemplo-project-name`
-
-7. Crie um novo `Pull Request` _(PR)_
-
-- Vá até a página de _Pull Requests_ do [repositório no GitHub](https://github.com/tryber/sd-0x-inventory-report/pulls)
-- Clique no botão verde _"New pull request"_
-- Clique na caixa de seleção _"Compare"_ e escolha a sua branch **com atenção**
-- Clique no botão verde _"Create pull request"_
-- Adicione uma descrição para o _Pull Request_ e clique no botão verde _"Create pull request"_
-- **Não se preocupe em preencher mais nada por enquanto!**
-- Volte até a [página de _Pull Requests_ do repositório](https://github.com/tryber/sd-0x-inventory-report/pulls) e confira que o seu _Pull Request_ está criado
+  - Serão `X` dias de projeto.
+  - Data de entrega para avaliação final do projeto: `DD/MM/YYYY - 14:00h`.
 
 ---
 
@@ -224,6 +215,66 @@ Os arquivos **XML** seguem o seguinte modelo:
 
 ---
 
+
+## Instruções para entregar seu projeto:
+
+### ANTES DE COMEÇAR A DESENVOLVER:
+
+1. Clone o repositório
+
+- `git clone git@github.com:tryber/sd-0x-inventory-report.git`.
+- Entre na pasta do repositório que você acabou de clonar:
+  - `sd-0x-inventory-report`
+
+2. Crie o ambiente virtual para o projeto
+
+- `python3 -m venv .venv && source .venv/bin/activate`
+
+Nota: após terminar o trabalho, para desativar o ambiente virtual digite `deactivate`
+
+3. Instale as dependências
+
+- `python3 -m pip install -r dev-requirements.txt`
+
+4. Crie uma branch a partir da branch `master`
+
+- Verifique que você está na branch `master`
+  - Exemplo: `git branch`
+- Se não estiver, mude para a branch `master`
+  - Exemplo: `git checkout master`
+- Agora crie uma branch à qual você vai submeter os `commits` do seu projeto
+  - Você deve criar uma branch no seguinte formato: `nome-github-nome-do-projeto`
+  - Exemplo: `git checkout -b exemplo-inventory-report`
+
+5. Adicione as mudanças ao _stage_ do Git e faça um `commit`
+
+- Verifique que as mudanças ainda não estão no _stage_
+  - Exemplo: `git status` (deve aparecer listada a pasta _exemplo_ em vermelho)
+- Adicione o novo arquivo ao _stage_ do Git
+  - Exemplo:
+    - `git add .` (adicionando todas as mudanças - _que estavam em vermelho_ - ao stage do Git)
+    - `git status` (deve aparecer listado o arquivo _exemplo/README.md_ em verde)
+- Faça o `commit` inicial
+  - Exemplo:
+    - `git commit -m 'iniciando o projeto inventory-report'` (fazendo o primeiro commit)
+    - `git status` (deve aparecer uma mensagem tipo _nothing to commit_ )
+
+6. Adicione a sua branch com o novo `commit` ao repositório remoto
+
+- Usando o exemplo anterior: `git push -u origin exemplo-project-name`
+
+7. Crie um novo `Pull Request` _(PR)_
+
+- Vá até a página de _Pull Requests_ do [repositório no GitHub](https://github.com/tryber/sd-0x-inventory-report/pulls)
+- Clique no botão verde _"New pull request"_
+- Clique na caixa de seleção _"Compare"_ e escolha a sua branch **com atenção**
+- Clique no botão verde _"Create pull request"_
+- Adicione uma descrição para o _Pull Request_ e clique no botão verde _"Create pull request"_
+- **Não se preocupe em preencher mais nada por enquanto!**
+- Volte até a [página de _Pull Requests_ do repositório](https://github.com/tryber/sd-0x-inventory-report/pulls) e confira que o seu _Pull Request_ está criado
+
+---
+
 ## Requisitos obrigatórios:
 
 #### 1 - Criar um método `generate` numa classe `SimpleReport` do módulo `inventory_report/reports/simple_report.py`. Esse método deverá receber dados numa lista contendo estruturas do tipo `dict` e deverá retornar uma string formatada como um relatório.
@@ -257,13 +308,13 @@ Os arquivos **XML** seguem o seguinte modelo:
 
 ##### As seguintes verificações serão feitas:
 
-**[Será validado que é possível que o método `generate` da classe `SimpleReport` retorne a data de fabricação mais antiga]**
+- 1.1 - Será validado que é possível que o método `generate` da classe `SimpleReport` retorne a data de fabricação mais antiga
 
-**[Será validado que é possível que o método `generate` da classe `SimpleReport` retorne a validade mais próxima]**
+- 1.2 - Será validado que é possível que o método `generate` da classe `SimpleReport` retorne a validade mais próxima
 
-**[Será validado que é possível que o método `generate` da classe `SimpleReport` retorne a empresa com maior estoque]**
+- 1.3 - Será validado que é possível que o método `generate` da classe `SimpleReport` retorne a empresa com maior estoque
 
-**[Será validado que é possível que o método `generate` da classe `SimpleReport` retorne o relatório no formato correto]**
+- 1.4 - Será validado que é possível que o método `generate` da classe `SimpleReport` retorne o relatório no formato correto
 
 #### 2 - Criar um método `generate` numa classe `CompleteReport` do módulo `inventory_report/reports/complete_report.py`. Esse método deverá receber dados numa lista contendo estruturas do tipo `dict` e deverá retornar uma string formatada como um relatório.
 
@@ -300,15 +351,15 @@ Os arquivos **XML** seguem o seguinte modelo:
 
 ##### As seguintes verificações serão feitas:
 
-**[Será validado que é possível que o método `generate` da classe `CompleteReport` retorne a data de fabricação mais antiga]**
+- 2.1 - Será validado que é possível que o método `generate` da classe `CompleteReport` retorne a data de fabricação mais antiga
 
-**[Será validado que é possível que o método `generate` da classe `CompleteReport` retorne a validade de fabricação mais próxima]**
+- 2.2 - Será validado que é possível que o método `generate` da classe `CompleteReport` retorne a validade de fabricação mais próxima
 
-**[Será validado que é possível que o método `generate` da classe `CompleteReport` retorne a empresa com maior estoque]**
+- 2.3 - Será validado que é possível que o método `generate` da classe `CompleteReport` retorne a empresa com maior estoque
 
-**[Será validado que é possível que o método `generate` da classe `CompleteReport` retorne a quantidade de produtos por empresa]**
+- 2.4 - Será validado que é possível que o método `generate` da classe `CompleteReport` retorne a quantidade de produtos por empresa
 
-**[Será validado que é possível que o método `generate` da classe `CompleteReport` retorne o relatório no formato correto]**
+- 2.5 - Será validado que é possível que o método `generate` da classe `CompleteReport` retorne o relatório no formato correto
 
 #### 3 - Criar um método `import_data` dentro de uma classe `Inventory` do módulo `inventory_report/inventory/inventory.py`, capaz de ler um arquivo CSV o qual o caminho é passado como parâmetro.
 
@@ -316,9 +367,9 @@ Os arquivos **XML** seguem o seguinte modelo:
 
 ##### As seguintes verificações serão feitas:
 
-**[Será validado que ao importar um arquivo csv simples será retornado com sucesso]**
+- 3.1 - Será validado que ao importar um arquivo csv simples será retornado com sucesso
 
-**[Será validado que ao importar um arquivo csv completo será retornado com sucesso]**
+- 3.2 - Será validado que ao importar um arquivo csv completo será retornado com sucesso
 
 #### 4 - Criar um método `import_data` dentro de uma classe `Inventory` do módulo `inventory_report/inventory/inventory.py`, capaz de ler um arquivo JSON o qual o caminho é passado como parâmetro.
 
@@ -328,9 +379,9 @@ Os arquivos **XML** seguem o seguinte modelo:
 
 ##### As seguintes verificações serão feitas:
 
-**[Será validado que ao importar um arquivo json simples será retornado com sucesso]**
+- 4.1 - Será validado que ao importar um arquivo json simples será retornado com sucesso
 
-**[Será validado que ao importar um arquivo json completo será retornado com sucesso]**
+- 4.2 - Será validado que ao importar um arquivo json completo será retornado com sucesso
 
 #### 5 - Criar um método `import_data` dentro de uma classe `Inventory` do módulo `inventory_report/inventory/inventory.py`, capaz de ler um arquivo XML o qual o caminho é passado como parâmetro.
 
@@ -340,9 +391,9 @@ Os arquivos **XML** seguem o seguinte modelo:
 
 ##### As seguintes verificações serão feitas:
 
-**[Será validado que ao importar um arquivo xml simples será retornado com sucesso]**
+- 5.1 - Será validado que ao importar um arquivo xml simples será retornado com sucesso
 
-**[Será validado que ao importar um arquivo xml completo será retornado com sucesso]**
+- 5.2 - Será validado que ao importar um arquivo xml completo será retornado com sucesso
 
 #### 6 - Criar uma classe abstrata `Importer` no módulo `inventory_report/importer/importer.py`, que terá três classes herdeiras: `CsvImporter`, `JsonImporter` e `XmlImporter`, cada uma definida em seu respectivo módulo.
 
@@ -368,27 +419,27 @@ Os arquivos **XML** seguem o seguinte modelo:
 
 ##### As seguintes verificações serão feitas:
 
-**[Será validado que a casse CsvImporter está herdando a classe Importer]**
+- 6.1 - Será validado que a casse CsvImporter está herdando a classe Importer
 
-**[Será validado que a casse JsonImporter está herdando a classe Importer]**
+- 6.2 - Será validado que a casse JsonImporter está herdando a classe Importer
 
-**[Será validado que a casse XmlImporter está herdando a classe Importer]**
+- 6.3 - Será validado que a casse XmlImporter está herdando a classe Importer
 
-**[Será validado que a classe CsvImporter esta importando os dados para uma lista]**
+- 6.4 - Será validado que a classe CsvImporter esta importando os dados para uma lista
 
-**[Será validado que a classe JsonImporter esta importando os dados para uma lista]**
+- 6.5 - Será validado que a classe JsonImporter esta importando os dados para uma lista
 
-**[Será validado que a classe XmlImporter esta importando os dados para uma lista]**
+- 6.6 - Será validado que a classe XmlImporter esta importando os dados para uma lista
 
-**[Será validado que ao enviar um arquivo com extensão incorreta para o CsvImporter irá gerar um erro]**
+- 6.7 - Será validado que ao enviar um arquivo com extensão incorreta para o CsvImporter irá gerar um erro
 
-**[Será validado que ao enviar um arquivo com extensão incorreta para o JsonImporter irá gerar um erro]**
+- 6.8 - Será validado que ao enviar um arquivo com extensão incorreta para o JsonImporter irá gerar um erro
 
-**[Será validado que ao enviar um arquivo com extensão incorreta para o XmlImporter irá gerar um erro]**
+- 6.9 - Será validado que ao enviar um arquivo com extensão incorreta para o XmlImporter irá gerar um erro
 
 👀 Estamos separando a lógica em várias classes (estratégias), preparando para aplicarmos o padrão de projeto **Strategy**. É uma solução para o caso em que uma classe possui muitas responsabilidades (propósitos).
 
-#### 7 - Criar uma classe `InventoryIterator` no módulo `inventory_report/inventory/inventory_iterator.py`, que implementa a interface de um iterator (`Iterator`).A classe `InventoryRefactor` deve implementar o método `__iter__`, que retornará este iterador.
+#### 7 - Criar uma classe `InventoryIterator` no módulo `inventory_report/inventory/inventory_iterator.py`, que implementa a interface de um iterator (`Iterator`). A classe `InventoryRefactor` deve implementar o método `__iter__`, que retornará este iterador.
 
 - A classe `Inventory` deverá ser refatorada (copiada) em outro arquivo chamado `inventory_report/inventory/inventory_refactor.py`. Nesse arquivo você irá refatorar a classe `Inventory` chamando-a de `InventoryRefactor`.
 
@@ -409,17 +460,17 @@ first_item = next(iterator)
 
 ##### As seguintes verificações serão feitas:
 
-**[Será validado que a instancia de InventoryRefactor é iterável (Iterable)]**
+- 7.1 - Será validado que a instancia de InventoryRefactor é iterável (Iterable)
 
-**[Será validado que é possivel iterar o primeiro item da lista usando csv]**
+- 7.2 - Será validado que é possivel iterar o primeiro item da lista usando csv
 
-**[Será validado que é possivel iterar o primeiro item da lista usando json]**
+- 7.3 - Será validado que é possivel iterar o primeiro item da lista usando json
 
-**[Será validado que é possivel iterar o primeiro item da lista usando xml]**
+- 7.4 - Será validado que é possivel iterar o primeiro item da lista usando xml
 
-**[Será validado que é possivel receber duas fontes de dados sem sobreescrita]**
+- 7.5 - Será validado que é possivel receber duas fontes de dados sem sobreescrita
 
-**[Será validado que não é possivel enviar arquivo inválido]**
+- 7.6 - Será validado que não é possivel enviar arquivo inválido
 
 
 ## Requisitos bônus:
@@ -460,55 +511,48 @@ first_item = next(iterator)
 
 ##### As seguintes verificações serão feitas:
 
-**[Será validado se o menu importa um arquivo csv simples]**
+- 8.1 - Será validado se o menu importa um arquivo csv simples
 
-**[Será validado se o menu importa um arquivo csv completo]**
+- 8.2 - Será validado se o menu importa um arquivo csv completo
 
-**[Será validado se o menu importa um arquivo json simples]**
+- 8.3 - Será validado se o menu importa um arquivo json simples
 
-**[Será validado se o menu importa um arquivo json completo]**
+- 8.4 - Será validado se o menu importa um arquivo json completo
 
-**[Será validado se o menu importa um arquivo xml simples]**
+- 8.5 - Será validado se o menu importa um arquivo xml simples
 
-**[Será validado se o menu importa um arquivo xml completo]**
+- 8.6 - Será validado se o menu importa um arquivo xml completo
 
-**[Será validado se houverem argumentos faltantes será retornando um erro]**
-
----
-
-### DURANTE O DESENVOLVIMENTO
-
-- Faça `commits` das alterações que você fizer no código regularmente
-
-- Lembre-se de sempre após um (ou alguns) `commits` atualizar o repositório remoto
-
-- Os comandos que você utilizará com mais frequência são:
-  1. `git status` _(para verificar o que está em vermelho - fora do stage - e o que está em verde - no stage)_
-  2. `git add` _(para adicionar arquivos ao stage do Git)_
-  3. `git commit` _(para criar um commit com os arquivos que estão no stage do Git)_
-  4. `git push -u nome-da-branch` _(para enviar o commit para o repositório remoto na primeira vez que fizer o `push` de uma nova branch)_
-  5. `git push` _(para enviar o commit para o repositório remoto após o passo anterior)_
+- 8.7 - Será validado se houverem argumentos faltantes será retornando um erro
 
 ---
 
-### DEPOIS DE TERMINAR O DESENVOLVIMENTO (OPCIONAL)
+## Depois de terminar o desenvolvimento
 
 Para sinalizar que o seu projeto está pronto para o _"Code Review"_ dos seus colegas, faça o seguinte:
 
-- Vá até a página **DO SEU** _Pull Request_, adicione a label de _"code-review"_ e marque seus colegas:
+* Vá até a página **DO SEU** _Pull Request_, adicione a label de _"code-review"_ e marque seus colegas:
 
-  - No menu à direita, clique no _link_ **"Labels"** e escolha a _label_ **code-review**;
+  * No menu à direita, clique no _link_ **"Labels"** e escolha a _label_ **code-review**;
 
-  - No menu à direita, clique no _link_ **"Assignees"** e escolha **o seu usuário**;
+  * No menu à direita, clique no _link_ **"Assignees"** e escolha **o seu usuário**;
 
-  - No menu à direita, clique no _link_ **"Reviewers"** e digite `students`, selecione o time `tryber/students-sd-0x`.
+  * No menu à direita, clique no _link_ **"Reviewers"** e digite `students`, selecione o time `tryber/students-sd-0x`.
 
 Caso tenha alguma dúvida, [aqui tem um video explicativo](https://vimeo.com/362189205).
 
 ---
 
-### REVISANDO UM PULL REQUEST
+## Revisando um pull request
 
 Use o conteúdo sobre [Code Review](https://course.betrybe.com/real-life-engineer/code-review/) para te ajudar a revisar os _Pull Requests_.
 
-#VQV 🚀
+---
+
+# Avisos finais
+
+Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência preenchendo o formulário. Leva menos de 3 minutos!
+
+Link: [FORMULÁRIO DE AVALIAÇÃO DE PROJETO](https://be-trybe.typeform.com/to/ZTeR4IbH)
+
+O avaliador automático não necessariamente avalia seu projeto na ordem em que os requisitos aparecem no readme. Isso acontece para deixar o processo de avaliação mais rápido. Então, não se assuste se isso acontecer, ok?
