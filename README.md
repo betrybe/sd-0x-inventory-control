@@ -65,8 +65,6 @@ Para entregar o seu projeto você deverá criar um _Pull Request_ neste reposit�
 
 Você pode adicionar outros arquivos se julgar necessário. Qualquer dúvida, procure a gente no Slack!.
 
-Lembre-se que você pode consultar nosso conteúdo sobre [Git & GitHub](https://course.betrybe.com/intro/git/) sempre que precisar!
-
 ---
 
 ## O que deverá ser desenvolvido
@@ -530,7 +528,7 @@ Caso tenha alguma dúvida, [aqui tem um video explicativo](https://vimeo.com/362
 
 ## Revisando um pull request
 
-Use o conteúdo sobre [Code Review](https://course.betrybe.com/real-life-engineer/code-review/) para te ajudar a revisar os _Pull Requests_.
+Use o conteúdo sobre [Code Review](https://app.betrybe.com/course/real-life-engineer/code-review/) para te ajudar a revisar os _Pull Requests_.
 
 ---
 
