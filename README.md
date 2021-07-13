@@ -13,14 +13,15 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 ## SUMÁRIO
 
 - [Habilidades](#habilidades)
-- [O que deverá ser desenvolvido](#o-que-deverá-ser-desenvolvido)
 - [Data de entrega](#data-de-entrega)
-- [Como desenvolver](#como-desenvolver)
-  - [Antes de começar a desenvolver](#antes-de-começar-a-desenvolver)
-- [Requisitos do projeto](#requisitos-do-projeto)
-  - [Linter](#linter)
-  - [Execução de testes de requisito](#execução-de-testes-de-requisito)
-- [Lista de requisitos](#lista-de-requisitos)
+- [Entregáveis](#entregáveis)
+- [O que deverá ser desenvolvido](#o-que-deverá-ser-desenvolvido)
+- [Desenvolvimento e testes](#desenvolvimento-e-testes)
+- [Dados](#dados)
+- [Antes de começar a desenvolver](#antes-de-começar-a-desenvolver)
+
+Lista de requisitos:
+- [Requisitos obrigatórios](#requisitos-obrigatórios)
   - [1 - Criar um método `generate` numa classe `SimpleReport` do módulo `inventory_report/reports/simple_report.py`. Esse método deverá receber dados numa lista contendo estruturas do tipo `dict` e deverá retornar uma string formatada como um relatório](#1---criar-um-método-generate-numa-classe-simplereport-do-módulo-inventory_reportreportssimple_reportpy-esse-método-deverá-receber-dados-numa-lista-contendo-estruturas-do-tipo-dict-e-deverá-retornar-uma-string-formatada-como-um-relatório)
   - [2 - Criar um método `generate` numa classe `CompleteReport` do módulo `inventory_report/reports/complete_report.py`. Esse método deverá receber dados numa lista contendo estruturas do tipo `dict` e deverá retornar uma string formatada como um relatório](#2---criar-um-método-generate-numa-classe-completereport-do-módulo-inventory_reportreportscomplete_reportpy-esse-método-deverá-receber-dados-numa-lista-contendo-estruturas-do-tipo-dict-e-deverá-retornar-uma-string-formatada-como-um-relatório)
   - [3 - Criar um método `import_data` dentro de uma classe `Inventory` do módulo `inventory_report/inventory/inventory.py`, capaz de ler um arquivo CSV o qual o caminho é passado como parâmetro](#3---criar-um-método-import_data-dentro-de-uma-classe-inventory-do-módulo-inventory_reportinventoryinventorypy-capaz-de-ler-um-arquivo-csv-o-qual-o-caminho-é-passado-como-parâmetro)
@@ -28,10 +29,10 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
   - [5 - Criar um método `import_data` dentro de uma classe `Inventory` do módulo `inventory_report/inventory/inventory.py`, capaz de ler um arquivo XML o qual o caminho é passado como parâmetro](#5---criar-um-método-import_data-dentro-de-uma-classe-inventory-do-módulo-inventory_reportinventoryinventorypy-capaz-de-ler-um-arquivo-xml-o-qual-o-caminho-é-passado-como-parâmetro)
   - [6 - Criar uma classe abstrata `Importer` no módulo `inventory_report/importer/importer.py`, que terá três classes herdeiras: `CsvImporter`, `JsonImporter` e `XmlImporter`, cada uma definida em seu respectivo módulo](#6---criar-uma-classe-abstrata-importer-no-módulo-inventory_reportimporterimporterpy-que-terá-três-classes-herdeiras-csvimporter-jsonimporter-e-xmlimporter-cada-uma-definida-em-seu-respectivo-módulo)
   - [7 - Criar uma classe `InventoryIterator` no módulo `inventory_report/inventory/inventory_iterator.py`, que implementa a interface de um iterator (`Iterator`). A classe `InventoryRefactor` deve implementar o método `__iter__`, que retornará este iterador](#7---criar-uma-classe-inventoryiterator-no-módulo-inventory_reportinventoryinventory_iteratorpy-que-implementa-a-interface-de-um-iterator-iterator-a-classe-inventoryrefactor-deve-implementar-o-método-__iter__-que-retornará-este-iterador)
-  - [8 - Preencha a função `main` no módulo `inventory_report/main.py` que ao inserir as informações necessárias, as ações adequadas devem ser disparadas](#8---preencha-a-função-main-no-módulo-inventory_reportmainpy-que-ao-inserir-as-informações-necessárias-as-ações-adequadas-devem-ser-disparadas)
-- [Instruções para entregar seu projeto](#instruções-para-entregar-seu-projeto)
-  - [Durante o desenvolvimento](#durante-o-desenvolvimento)
-  - [Depois de terminar o desenvolvimento (opcional)](#depois-de-terminar-o-desenvolvimento-opcional)
+- [Requisitos bônus](#requisitos-bônus)
+  - [8 - Preencha a função main no módulo inventory_report/main.py que, ao receber pela linha de comando o caminho de um arquivo e o tipo de relatório, devolve o relatório correto](#8---preencha-a-função-main-no-módulo-inventory_reportmainpy-que-ao-receber-pela-linha-de-comando-o-caminho-de-um-arquivo-e-o-tipo-de-relatório-devolve-o-relatório-correto)
+
+- [Depois de terminar o desenvolvimento (opcional)](#depois-de-terminar-o-desenvolvimento)
   - [Revisando um Pull Request](#revisando-um-pull-request)
 - [Avisos finais](#avisos-finais)
 
