@@ -50,8 +50,7 @@ Nesse projeto, você será capaz de:
 
 ## Data de entrega
 
-  - Projeto individual;
-
+  - Projeto obrigatório;
   - Serão `X` dias de projeto.
   - Data de entrega para avaliação final do projeto: `DD/MM/YYYY - 14:00h`.
 
